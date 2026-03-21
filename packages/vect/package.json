@@ -2,8 +2,8 @@
   "name": "@jsyg/vect",
   "version": "1.0.0",
   "description": "Vector constructor for JSYG",
-  "main": "Vect.js",
-  "files": ["Vect.js"],
+  "main": "index.js",
+  "files": ["index.js"],
   "directories": {
     "test": "tests"
   },

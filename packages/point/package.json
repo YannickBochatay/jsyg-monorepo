@@ -2,8 +2,8 @@
   "name": "@jsyg/point",
   "version": "1.0.0",
   "description": "Point constructor for JSYG",
-  "main": "Point.js",
-  "files": ["Point.js"],
+  "main": "index.js",
+  "files": ["index.js"],
   "directories": {
     "test": "tests"
   },

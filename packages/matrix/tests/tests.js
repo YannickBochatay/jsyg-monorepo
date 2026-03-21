@@ -1,66 +1,40 @@
-if (typeof require!= "undefined") {
+import Matrix from "../index.js";
+
+const { module, test } = QUnit
+
+module("Matrix");
+
+test("Création d'une matrice", assert => {     
+
+    var mtx = new Matrix();
     
-    require.config({
-        paths: {
-            "jquery": '../node_modules/jquery/dist/jquery',
-            "jsyg-wrapper": '../node_modules/jsyg-wrapper/JSYG-wrapper',
-            "jsyg-point": '../node_modules/jsyg-point/JSYG.Point',
-            "jsyg-vect": '../node_modules/jsyg-vect/JSYG.Vect',
-            "jsyg-matrix": '../JSYG.Matrix'
-        },
-        urlArgs: "bust=" + (+new Date())
-    });
-}
+    assert.expect(6);
+    assert.equal(mtx.a,1,"a");
+    assert.equal(mtx.b,0,"b");
+    assert.equal(mtx.c,0,"c");
+    assert.equal(mtx.d,1,"d");
+    assert.equal(mtx.e,0,"e");
+    assert.equal(mtx.f,0,"f");
+});
 
-QUnit.config.autostart = false;
+    test("Translation", assert => {     
 
-(function(factory) {
+    var mtx = new Matrix();
     
-    if (typeof define == 'function' && define.amd) require(["jsyg-matrix","jsyg-wrapper"],factory);
-    else if (typeof JSYG != "undefined") factory(JSYG.Matrix);
-    else factory(Matrix);
+    mtx = mtx.translate(5,10);
     
-}(function(Matrix) {
+    assert.expect(2);
+    assert.equal(mtx.e,5,"x");
+    assert.equal(mtx.f,10,"y");
+});
 
-    QUnit.start();
+test("Scale", assert => {     
 
-    const { module, test } = QUnit
-
-    module("Matrix");
-
-    test("Création d'une matrice", assert => {     
-
-        var mtx = new Matrix();
-        
-        assert.expect(6);
-        assert.equal(mtx.a,1,"a");
-        assert.equal(mtx.b,0,"b");
-        assert.equal(mtx.c,0,"c");
-        assert.equal(mtx.d,1,"d");
-        assert.equal(mtx.e,0,"e");
-        assert.equal(mtx.f,0,"f");
-    });
+    var mtx = new Matrix();
     
-     test("Translation", assert => {     
-
-        var mtx = new Matrix();
-        
-        mtx = mtx.translate(5,10);
-        
-        assert.expect(2);
-        assert.equal(mtx.e,5,"x");
-        assert.equal(mtx.f,10,"y");
-    });
+    mtx = mtx.scale(2);
     
-    test("Scale", assert => {     
-
-        var mtx = new Matrix();
-        
-        mtx = mtx.scale(2);
-        
-        assert.expect(2);
-        assert.equal(mtx.a,2,"scale x");
-        assert.equal(mtx.d,2,"scale y");
-    });
-    
-}));
+    assert.expect(2);
+    assert.equal(mtx.a,2,"scale x");
+    assert.equal(mtx.d,2,"scale y");
+});

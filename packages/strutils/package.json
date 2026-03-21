@@ -1,15 +1,14 @@
 {
-  "name": "@jsyg/matrix",
+  "name": "@jsyg/strutils",
   "version": "1.0.0",
-  "description": "Matrix constructor for JSYG",
+  "description": "String utilitaries for JSYG framework or standalone",
   "main": "index.js",
   "files": ["index.js"],
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "documentation readme JSYG.Matrix.js --section=API"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -26,8 +25,5 @@
   "bugs": {
     "url": "https://github.com/YannickBochatay/jsyg-monorepo/issues"
   },
-  "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme",
-  "dependencies": {
-    "@jsyg/vect": "^1.0.0"
-  }
+  "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme"
 }

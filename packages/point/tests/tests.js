@@ -1,4 +1,4 @@
-import Point from "../Point.js"
+import Point from "../index.js"
 
 const { module, test } = QUnit;
 
