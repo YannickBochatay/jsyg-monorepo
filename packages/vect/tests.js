@@ -1,4 +1,4 @@
-import Vect from "../index.js";
+import Vect from "@jsyg/vect";
 
 const { module, test } = QUnit
 

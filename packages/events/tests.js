@@ -1,4 +1,4 @@
-import Events from "../index.js"
+import Events from "@jsyg/events";
 
 const { module, test } = QUnit
 

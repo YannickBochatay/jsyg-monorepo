@@ -1,4 +1,4 @@
-import Matrix from "../index.js";
+import Matrix from "@jsyg/matrix";
 
 const { module, test } = QUnit
 

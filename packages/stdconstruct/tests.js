@@ -1,4 +1,4 @@
-import StdConstruct from "../index.js";
+import StdConstruct from "@jsyg/stdconstruct";
 
 const { module, test } = QUnit
 

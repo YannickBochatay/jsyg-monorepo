@@ -1,4 +1,4 @@
-import * as utils from '../index.js';
+import * as utils from '@jsyg/strutils';
 
 // ==================== BASE64 ENCODING/DECODING ====================
 QUnit.module('Base64 Encoding/Decoding', () => {

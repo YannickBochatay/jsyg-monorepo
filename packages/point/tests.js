@@ -1,4 +1,4 @@
-import Point from "../index.js"
+import Point from "@jsyg/point";
 
 const { module, test } = QUnit;
 

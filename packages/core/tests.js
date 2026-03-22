@@ -1,4 +1,4 @@
-import JSYG from "../index.js";
+import JSYG from "@jsyg/core";
 
 const { module, test } = QUnit
 

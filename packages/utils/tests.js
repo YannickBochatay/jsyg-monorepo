@@ -1,4 +1,4 @@
-import $ from "../index.js";
+import $ from "@jsyg/utils";
 
 const { module, test } = QUnit
 
