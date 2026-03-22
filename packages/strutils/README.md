@@ -22,12 +22,6 @@ npm install @jsyg/strutils
     *   [Parameters](#parameters-2)
 *   [urldecode](#urldecode)
     *   [Parameters](#parameters-3)
-*   [utf8encode](#utf8encode)
-    *   [Parameters](#parameters-4)
-*   [utf8decode](#utf8decode)
-    *   [Parameters](#parameters-5)
-*   [isUtf8](#isutf8)
-    *   [Parameters](#parameters-6)
 *   [ucfirst](#ucfirst)
     *   [Parameters](#parameters-7)
 *   [lcfirst](#lcfirst)
@@ -91,36 +85,6 @@ Decode une chaîne après transmission par chaîne de requête
 *   `str`  chaîne à décoder
 
 Returns **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
-
-#### utf8encode
-
-Encodage d'une chaîne au format UTF8
-
-##### Parameters
-
-*   `string` &#x20;
-
-Returns **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
-
-#### utf8decode
-
-Décodage d'une chaîne UTF8 en ISO-8859-1
-
-##### Parameters
-
-*   `string` &#x20;
-
-Returns **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
-
-#### isUtf8
-
-Détecte si la chaîne est encodée en UTF8 ou non
-
-##### Parameters
-
-*   `string` &#x20;
-
-Returns **[Boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**&#x20;
 
 #### ucfirst
 

@@ -66,56 +66,6 @@ QUnit.module('URL Encoding/Decoding', () => {
     });
 });
 
-// ==================== UTF-8 ENCODING/DECODING ====================
-QUnit.module('UTF-8 Encoding/Decoding', () => {
-    QUnit.test('should encode ASCII string', (assert) => {
-        assert.strictEqual(utils.utf8encode('Hello'), 'Hello');
-    });
-
-    QUnit.test('should encode accented characters', (assert) => {
-        const result = utils.utf8encode('é');
-        assert.ok(result.includes('%C3%A9')); // UTF-8 encoding of é
-    });
-
-    QUnit.test('should decode UTF-8 encoded string', (assert) => {
-        const encoded = '%C3%A9';
-        assert.strictEqual(utils.utf8decode(encoded), 'é');
-    });
-
-    QUnit.test('round-trip UTF-8 encoding/decoding', (assert) => {
-        const original = 'Café résumé naïve';
-        const encoded = utils.utf8encode(original);
-        const decoded = utils.utf8decode(encoded);
-        assert.strictEqual(decoded, original);
-    });
-
-    QUnit.test('should handle emoji', (assert) => {
-        const original = 'Hello 👋 World 🌍';
-        const encoded = utils.utf8encode(original);
-        const decoded = utils.utf8decode(encoded);
-        assert.strictEqual(decoded, original);
-    });
-});
-
-// ==================== UTF-8 DETECTION ====================
-QUnit.module('UTF-8 Detection', () => {
-    QUnit.test('should detect ASCII as UTF-8', (assert) => {
-        assert.strictEqual(utils.isUtf8('Hello World'), true);
-    });
-
-    QUnit.test('should detect UTF-8 with accents', (assert) => {
-        assert.strictEqual(utils.isUtf8('Café'), true);
-    });
-
-    QUnit.test('should detect Chinese characters as UTF-8', (assert) => {
-        assert.strictEqual(utils.isUtf8('你好'), true);
-    });
-
-    QUnit.test('should detect emoji as UTF-8', (assert) => {
-        assert.strictEqual(utils.isUtf8('👋'), true);
-    });
-});
-
 // ==================== STRING CASE TRANSFORMATIONS ====================
 QUnit.module('String Case Transformations', () => {
     QUnit.test('ucfirst - capitalize first letter', (assert) => {
@@ -167,11 +117,11 @@ QUnit.module('Tag Manipulation', () => {
     });
 
     QUnit.test('stripTags - keep allowed tags', (assert) => {
-        assert.strictEqual(utils.stripTags('<p>Hello <br>World</p>', 'br'), '<br>');
+        assert.strictEqual(utils.stripTags('<p>Hello <br>World</p>', 'br'), 'Hello <br>World');
     });
 
     QUnit.test('stripTagsR - remove forbidden tags', (assert) => {
-        assert.strictEqual(utils.stripTagsR('<p>Hello <script>alert</script></p>', 'script'), '<p>Hello </p>');
+        assert.strictEqual(utils.stripTagsR('<p>Hello <script>alert</script></p>', 'script'), '<p>Hello alert</p>');
     });
 
     QUnit.test('stripAttributes - remove attributes from tags', (assert) => {
@@ -180,7 +130,7 @@ QUnit.module('Tag Manipulation', () => {
 
     QUnit.test('getTagContent - extract content from tags', (assert) => {
         const result = utils.getTagContent('<p>Hello</p><p>World</p>', 'p');
-        assert.strictEqual(result, null); // Note: This test may need adjustment based on actual regex behavior
+        assert.deepEqual(result, ["Hello", "World"]);
     });
 
     QUnit.test('stripTagAndContent - remove tags and content', (assert) => {
@@ -247,14 +197,6 @@ QUnit.module('Performance', () => {
         const largeString = 'A'.repeat(10000);
         const start = performance.now();
         utils.base64encode(largeString);
-        const end = performance.now();
-        assert.ok(end - start < 100, 'Should complete in under 100ms');
-    });
-
-    QUnit.test('utf8encode performance with large string', (assert) => {
-        const largeString = 'éàüñ'.repeat(2500);
-        const start = performance.now();
-        utils.utf8encode(largeString);
         const end = performance.now();
         assert.ok(end - start < 100, 'Should complete in under 100ms');
     });

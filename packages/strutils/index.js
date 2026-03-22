@@ -7,14 +7,22 @@ const rTags = /<\/?([a-z]\w*)\b[^>]*>/gi;
  * @param input string to encode
  * @returns {String}
  */
-export function base64encode(input) { return window.btoa( this.utf8encode(input) ); }
+export function base64encode(str) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        (match, p1) => String.fromCharCode('0x' + p1)
+    ));
+}
 
 /**
  * Decodes a base64 encoded string.
  * @param input string to decode
  * @returns {String}
  */
-export function base64decode(input) { return this.utf8decode( window.atob(input) ); }
+export function base64decode(str) {
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
 
 /**
  * Formats a string for transmission via query string
@@ -35,108 +43,6 @@ export function urldecode(str) {
 }
 
 /**
- * Encoding a string to UTF8 format
- * @param string
- * @returns {String}
- */
-export function utf8encode(string) {
-    //Johan Sundström
-    return window.unescape( this.urlencode( string ) );
-}
-
-/**
- * Decoding a UTF8 string to ISO-8859-1
- * @param string
- * @returns {String}
- */
-export function utf8decode(string) {
-    //Johan Sundström
-    return this.urldecode( window.escape(string) );
-}
-
-/**
- * Detects if the string is encoded in UTF8 or not
- * @param string
- * @returns {Boolean}
- * @link https://github.com/wayfind/is-utf8
- */
-export function isUtf8(string) {
-    
-    var i = 0;
-    while(i < string.length)
-    {
-        if(     (// ASCII
-        string[i] == 0x09 ||
-            string[i] == 0x0A ||
-            string[i] == 0x0D ||
-            (0x20 <= string[i] && string[i] <= 0x7E)
-            )
-            ) {
-            i += 1;
-            continue;
-        }
-        
-        if(     (// non-overlong 2-byte
-        (0xC2 <= string[i] && string[i] <= 0xDF) &&
-            (0x80 <= string[i+1] && string[i+1] <= 0xBF)
-            )
-            ) {
-            i += 2;
-            continue;
-        }
-        
-        if(     (// excluding overlongs
-        string[i] == 0xE0 &&
-            (0xA0 <= string[i + 1] && string[i + 1] <= 0xBF) &&
-            (0x80 <= string[i + 2] && string[i + 2] <= 0xBF)
-            ) ||
-            (// straight 3-byte
-        ((0xE1 <= string[i] && string[i] <= 0xEC) ||
-            string[i] == 0xEE ||
-            string[i] == 0xEF) &&
-            (0x80 <= string[i + 1] && string[i+1] <= 0xBF) &&
-            (0x80 <= string[i+2] && string[i+2] <= 0xBF)
-            ) ||
-            (// excluding surrogates
-        string[i] == 0xED &&
-            (0x80 <= string[i+1] && string[i+1] <= 0x9F) &&
-            (0x80 <= string[i+2] && string[i+2] <= 0xBF)
-            )
-            ) {
-            i += 3;
-            continue;
-        }
-        
-        if(     (// planes 1-3
-        string[i] == 0xF0 &&
-            (0x90 <= string[i + 1] && string[i + 1] <= 0xBF) &&
-            (0x80 <= string[i + 2] && string[i + 2] <= 0xBF) &&
-            (0x80 <= string[i + 3] && string[i + 3] <= 0xBF)
-            ) ||
-            (// planes 4-15
-        (0xF1 <= string[i] && string[i] <= 0xF3) &&
-            (0x80 <= string[i + 1] && string[i + 1] <= 0xBF) &&
-            (0x80 <= string[i + 2] && string[i + 2] <= 0xBF) &&
-            (0x80 <= string[i + 3] && string[i + 3] <= 0xBF)
-            ) ||
-            (// plane 16
-        string[i] == 0xF4 &&
-            (0x80 <= string[i + 1] && string[i + 1] <= 0x8F) &&
-            (0x80 <= string[i + 2] && string[i + 2] <= 0xBF) &&
-            (0x80 <= string[i + 3] && string[i + 3] <= 0xBF)
-            )
-            ) {
-            i += 4;
-            continue;
-        }
-        
-        return false;
-    }
-    
-    return true;
-}
-
-/**
  * Puts the first letter of the string in uppercase
  * @param str string to analyze
  * @returns {String}
@@ -153,7 +59,7 @@ export function ucfirst(str) {
  */
 export function lcfirst(str) {
     
-    return str.charAt(0).toLowerCase() + str.substr(1);
+    return str.charAt(0).toLowerCase() + str.slice(1);
 }
 
 /**
@@ -197,11 +103,8 @@ export function stripAccents(str) {
  * @example JSYG.stripTags('&lt;tata&gt;toto&lt;/tata&gt;','br','span') == 'toto';
  * @see stripTagsR
  */
-export function stripTags(str,allowed) {
-    
-    allowed = slice.call(arguments,1);
-    
-    return str.replace(rTags, function (s, s1) { return allowed.indexOf(s1.toLowerCase()) !== -1 ? s : '';});
+export function stripTags(str, ...allowed) {
+    return str.replaceAll(rTags, (s, s1) => allowed.includes(s1.toLowerCase()) ? s : '');
 }
 
 /**
@@ -212,11 +115,8 @@ export function stripTags(str,allowed) {
  * @returns {String}
  * @see stripTags
  */
-export function stripTagsR(str,forbidden) {
-    
-    forbidden = slice.call(arguments,1);
-    
-    return str.replace(rTags, function (s, s1) { return forbidden.indexOf(s1.toLowerCase()) !== -1 ? '' : s;});
+export function stripTagsR(str, ...forbidden) {
+    return str.replaceAll(rTags, (s, s1) => forbidden.includes(s1.toLowerCase()) ? '' : s);
 }
 
 /**
@@ -225,8 +125,7 @@ export function stripTagsR(str,forbidden) {
  * @returns {String}
  */
 export function stripAttributes(str) {
-    
-    return str.replace('/<([a-z]\w*)\b[^>]*>/i', function(s) { return '<'+s+'>'; });
+    return str.replaceAll(/<([a-z]\w*)\b[^>]*>/gi, (s, s1) => '<'+s1+'>');
 }
 
 /**
@@ -237,13 +136,13 @@ export function stripAttributes(str) {
  */
 export function getTagContent(str,tag) {
     
-    var regexp = regexpTag(tag),
+    let regexp = regexpTag(tag),
     occ = str.match(regexp),
     i,N;
     
-    if (occ===null) return null;
+    if (occ==null) return null;
     
-    for (i=0,N=occ.length;i<N;i++) occ[i] = occ[i].replace(regexp,function(str,p1) { return p1; });
+    for (i=0,N=occ.length;i<N;i++) occ[i] = occ[i].replace(regexp, (s, s1, s2) => s2);
     
     return occ;
 }
@@ -265,7 +164,7 @@ export function stripTagAndContent(str,tag,content) {
  * @returns {String}
  */
 export function camelize(str) {
-    return str.replace(/(-|_|\s+)([a-z])/ig,function(str,p1,p2){ return p2.toUpperCase();});
+    return lcfirst(str).replaceAll(/(-|_|\s+)([a-z])/ig, (str, p1, p2) => p2.toUpperCase());
 }
 
 /**
