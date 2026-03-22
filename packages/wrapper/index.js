@@ -209,19 +209,6 @@ JSYG.each = function(list,callback) {
     else return $.each(list,callback);
 };
 
-JSYG.makeArray = function(list) {
-                    
-    if (typeof list == 'object' && typeof list.numberOfItems == "number") { //SVGList
-    
-        const tab = [];
-    
-        for (let i=0,N=list.numberOfItems;i<N;i++) tab.push(list.getItem(i));
-        
-        return tab;
-    }
-    else return $.makeArray(list);		
-};
-
 function getFarthestViewportElement(elmt) {
     let viewport = elmt.viewportElement;
 

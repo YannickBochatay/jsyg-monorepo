@@ -1,5 +1,5 @@
 import $ from "jquery";
-import JSYG from "../JSYG-wrapper.js";
+import JSYG from "../index.js";
 
 const { test, module } = QUnit;
     
