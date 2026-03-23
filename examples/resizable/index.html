@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JSYG.Resizable</title>
+        <script type="importmap">
+        {
+            "imports": {
+                "jquery": "../../node_modules/jquery/dist-module/jquery.module.min.js",
+                "pathseg": "../../node_modules/pathseg/pathseg.js",
+                "@jsyg/wrapper": "../../node_modules/@jsyg/wrapper/index.js",
+                "@jsyg/point": "../../node_modules/@jsyg/point/index.js",
+                "@jsyg/vect": "../../node_modules/@jsyg/vect/index.js",
+                "@jsyg/matrix": "../../node_modules/@jsyg/matrix/index.js",
+                "@jsyg/utils": "../../node_modules/@jsyg/utils/index.js",
+                "@jsyg/strutils": "../../node_modules/@jsyg/strutils/index.js",
+                "@jsyg/events": "../../node_modules/@jsyg/events/index.js",
+                "@jsyg/stdconstruct": "../../node_modules/@jsyg/stdconstruct/index.js",
+                "@jsyg/core": "../../node_modules/@jsyg/core/index.js",
+                "@jsyg/path": "../../node_modules/@jsyg/path/index.js",
+                "@jsyg/pathdrawer": "../../node_modules/@jsyg/pathdrawer/index.js",
+                "@jsyg/resizable": "../../node_modules/@jsyg/resizable/index.js"
+            }
+        }
+        </script>
+        <style>
+            html,body {
+                margin:0;
+                padding:0;
+            }
+            body {
+                height:100vh;
+                width:100vw;
+                overflow:hidden;
+            }
+            .container {
+                border:1px solid gray;
+                height:150px;
+                width:100%;
+                position:relative;
+            }            
+        </style>
+    </head>
+    <body>
+        <strong>SVG</strong>
+        <svg width="100%" height="150" class="container">
+            <rect class="resize" x="10" y="10" width="80" height="40" fill="pink"/>
+        </svg>
+        size : <span id="posSVG"></span>
+        <br/>
+        <br/>
+        <strong>HTML</strong>
+        <div class="container">
+            <div class="resize" style="position:absolute;top:10px;left:10px;width:80px;height:40px;background-color:pink"></div>
+        </div>
+        size : <span id="posHTML"></span>
+        <script type="module">           
+            import JSYG from "@jsyg/core";
+            import "@jsyg/resizable";
+
+            const posSVG = JSYG("#posSVG");
+            const posHTML = JSYG("#posHTML");
+        
+            JSYG(".resize").resizable({
+                
+                bounds:0,
+                
+                autoScroll:true,
+                
+                ondrag:function() {
+                    const $this = JSYG(this);
+                    const dim = $this.getDim();
+                    ($this.isSVG() ? posSVG : posHTML).text( "width:"+dim.width+", height:"+dim.height);
+                }
+            });
+        </script>
+    </body>
+</html>
