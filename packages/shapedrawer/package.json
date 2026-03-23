@@ -1,0 +1,33 @@
+{
+  "name": "@jsyg/shapedrawer",
+  "version": "1.0.0",
+  "description": "Drawing svg shapes with JSYG framework",
+  "main": "index.js",
+  "files":["index.js"],
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YannickBochatay/jsyg-monorepo.git"
+  },
+  "keywords": [
+    "svg",
+    "jquery",
+    "javascript",
+    "library"
+  ],
+  "author": "Yannick Bochatay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YannickBochatay/jsyg-monorepo/issues"
+  },
+  "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme",
+  "dependencies": {
+    "@jsyg/core": "^1.0.0",
+    "@jsyg/resizable": "^1.0.0"
+  }
+}

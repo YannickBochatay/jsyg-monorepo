@@ -3,7 +3,8 @@
 
   const DIR = "node_modules";
 
-  const jsygModules = ["core","draggable", "events","matrix","path","pathdrawer","point","resizable","stdconstruct","strutils","utils","vect","wrapper"];
+  const jsygModules = ["core","draggable", "events","matrix","path","pathdrawer",
+    "point","resizable","shapedrawer", "stdconstruct","strutils","utils","vect","wrapper"];
 
   const map = { imports : {
     jquery : DIR + "/jquery/dist-module/jquery.module.min.js",
