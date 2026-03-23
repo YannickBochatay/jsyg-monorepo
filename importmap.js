@@ -1,14 +1,14 @@
 (()=>{
   // inspired by https://lea.verou.me/blog/2026/external-import-maps-today/
 
-  const DIR = "../node_modules";
+  const DIR = "node_modules";
+
+  const jsygModules = ["core","draggable", "events","matrix","path","pathdrawer","point","resizable","stdconstruct","strutils","utils","vect","wrapper"];
 
   const map = { imports : {
     jquery : DIR + "/jquery/dist-module/jquery.module.min.js",
     pathseg : DIR + "/pathseg/pathseg.js"
   } };
-
-  const jsygModules = ["core","events","matrix","path","pathdrawer","point","resizable","stdconstruct","strutils","utils","vect","wrapper"];
 	
   for (const module of jsygModules) {
     map.imports[`@jsyg/${module}`] = `${DIR}/@jsyg/${module}/index.js`;
