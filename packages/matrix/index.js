@@ -264,7 +264,7 @@ Matrix.prototype = {
             };
         }
         
-        const mtx = this.mtx;
+        let mtx = this.mtx;
         
         if ((mtx.a * mtx.d - mtx.b * mtx.c) === 0) return false;
         
