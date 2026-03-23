@@ -1,0 +1,33 @@
+{
+  "name": "@jsyg/undoredo",
+  "version": "1.0.0",
+  "description": "DOM Undo/Redo functionnalities",
+  "main": "index.js",
+  "files": ["index.js"],
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YannickBochatay/jsyg-monorepo.git"
+  },
+  "keywords": [
+    "svg",
+    "jquery",
+    "javascript",
+    "library"
+  ],
+  "author": "Yannick Bochatay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YannickBochatay/jsyg-monorepo/issues"
+  },
+  "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme",
+  "dependencies": {
+    "jquery": "^4",
+    "@jsyg/stdconstruct": "^1.0.0"
+  }
+}
