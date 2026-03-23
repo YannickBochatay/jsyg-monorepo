@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme",
   "dependencies": {
+    "jquery": "^4.0.0",
     "@jsyg/events": "^1.0.0"
   }
 }

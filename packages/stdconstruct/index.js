@@ -1,4 +1,5 @@
 import Events from "@jsyg/events";
+import $ from "jquery";
 /**
  * Constructeur standard définissant une liste de fonctions utiles pour les plugins
  * @returns {StdConstruct}
