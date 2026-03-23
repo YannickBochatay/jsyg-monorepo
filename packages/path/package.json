@@ -1,0 +1,35 @@
+{
+  "name": "@jsyg/path",
+  "version": "1.0.0",
+  "description": "Manipulation of svg path with JSYG framework",
+  "main": "index.js",
+  "files": ["index.js"],
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YannickBochatay/jsyg-monorepo.git"
+  },
+  "keywords": [
+    "svg",
+    "jsyg",
+    "jquery",
+    "javascript",
+    "library",
+    "path"
+  ],
+  "author": "Yannick Bochatay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YannickBochatay/jsyg-monorepo/issues"
+  },
+  "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme",
+  "dependencies": {
+    "@jsyg/core": "^1.0.0",
+    "pathseg": "^1.2.1"
+  }
+}
