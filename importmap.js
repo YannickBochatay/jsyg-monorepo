@@ -3,7 +3,7 @@
 
   const DIR = "node_modules";
 
-  const jsygModules = ["boundingbox", "core","draggable", "events","matrix","path","pathdrawer",
+  const jsygModules = ["boundingbox", "container", "core","draggable", "events","matrix","path","pathdrawer",
     "point","polylinedrawer","resizable", "rotatable", "selection", "shapedrawer", "stdconstruct",
     "strutils", "utils","vect","wrapper","zoomandpan"];
 
