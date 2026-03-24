@@ -174,7 +174,12 @@ Path.prototype.getSeg = function(i) {
  * @returns {Array}
  */
 Path.prototype.getSegList = function() {
-    return JSYG.makeArray(this[0].pathSegList);
+    const list = this[0].pathSegList;
+    const arr = [];
+    for (let i=0; i < list.numberOfItems; i++) {
+        arr.push(list.getItem(i));
+    }
+    return arr;
 };
 
 /**
