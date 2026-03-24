@@ -3,10 +3,10 @@
 
   const DIR = "node_modules";
 
-  const jsygModules = ["alignment", "boundingbox", "container", "core","draggable", "events",
-    "matrix","path","pathdrawer", "point","polylinedrawer","resizable", "rotatable", "selection",
-    "shapedrawer", "stdconstruct", "strutils", "texteditor", "undoredo", "utils","vect","wrapper",
-    "zoomandpan"];
+  const jsygModules = ["alignment", "boundingbox", "container", "core","draggable", "editor",
+    "events", "matrix","path","pathdrawer", "point","polylinedrawer","resizable", "rotatable",
+    "selection", "shapedrawer", "stdconstruct", "strutils", "texteditor", "undoredo", "utils",
+    "vect","wrapper", "zoomandpan"];
 
   const map = { imports : {
     jquery : DIR + "/jquery/dist-module/jquery.module.min.js",
