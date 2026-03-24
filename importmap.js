@@ -5,7 +5,8 @@
 
   const jsygModules = ["alignment", "boundingbox", "container", "core","draggable", "events",
     "matrix","path","pathdrawer", "point","polylinedrawer","resizable", "rotatable", "selection",
-    "shapedrawer", "stdconstruct", "strutils", "undoredo", "utils","vect","wrapper","zoomandpan"];
+    "shapedrawer", "stdconstruct", "strutils", "texteditor", "undoredo", "utils","vect","wrapper",
+    "zoomandpan"];
 
   const map = { imports : {
     jquery : DIR + "/jquery/dist-module/jquery.module.min.js",

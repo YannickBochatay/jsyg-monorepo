@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JSYG tests</title>
+        <script src="../../importmap.js"></script>
+    </head>
+    <body>
+        
+        <svg width="588" height="588" id="content" viewBox="0 0 588 588">
+            <text fill="orange" x="10" y="30">Ce texte est editable</text>
+            <text fill="blue" x="30" y="200">This text is editable</text>
+        </svg>
+       
+        <script type="module">
+            import JSYG from "@jsyg/core";
+            import TextEditor from "@jsyg/texteditor";
+            
+            const container = new JSYG("#content");
+            
+            const editor = new JSYG.TextEditor(container);
+           
+           JSYG('svg').on("click",function(e) {
+               const target = new JSYG(e.target);
+               if (target.getTag() == "text") {
+                   editor.target(target);
+                   editor.show();
+               }
+                   
+           });
+           
+            
+        </script>
+    </body>
+</html>
