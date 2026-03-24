@@ -584,9 +584,9 @@ ClipBoard.prototype.oncopy = null;
 ClipBoard.prototype.oncut = null;
 ClipBoard.prototype.onpaste = null;
 
-ClipBoard.prototype.keyShortCutCopy = "ctrl+c";
-ClipBoard.prototype.keyShortCutCut = "ctrl+x";
-ClipBoard.prototype.keyShortCutPaste = "ctrl+v";
+ClipBoard.prototype.keyShortCutCopy = "c";
+ClipBoard.prototype.keyShortCutCut = "x";
+ClipBoard.prototype.keyShortCutPaste = "v";
 
 ClipBoard.prototype.enabled = false;
 
@@ -677,31 +677,37 @@ ClipBoard.prototype.enableKeyShortCuts = function(opt) {
 
     function copy(e) {
         if (!that.editor.display) return;
-        e.preventDefault();
-        that.copy();
+        if ((e.ctrlKey || e.metaKey) && e.key === that.keyShortCutCopy) {
+            e.preventDefault();
+            that.copy();
+        }
     }
 
     function cut(e) {
         if (!that.editor.display) return;
-        e.preventDefault();
-        that.cut();
+        if ((e.ctrlKey || e.metaKey) && e.key === that.keyShortCutCut) {
+            e.preventDefault();
+            that.cut();
+        }
     }
 
     function paste(e) {
         if (!that.buffer) return;
-        e.preventDefault();
-        that.paste();
+        if ((e.ctrlKey || e.metaKey) && e.key === that.keyShortCutPaste) {
+            e.preventDefault();
+            that.paste();
+        }
     }
 
-    if (this.keyShortCutCopy) $doc.on("keydown",null,this.keyShortCutCopy,copy);
-    if (this.keyShortCutCut) $doc.on("keydown",null,this.keyShortCutCut,cut);
-    if (this.keyShortCutPaste) $doc.on("keydown",null,this.keyShortCutPaste,paste);
+    if (this.keyShortCutCopy) $doc.on("keydown",copy);
+    if (this.keyShortCutCut) $doc.on("keydown",cut);
+    if (this.keyShortCutPaste) $doc.on("keydown",paste);
     
     this.disableKeyShortCuts = function() {
         
-        if (this.keyShortCutCopy) $doc.off("keydown",null,this.keyShortCutCopy,copy);
-        if (this.keyShortCutCut) $doc.off("keydown",null,this.keyShortCutCut,cut);
-        if (this.keyShortCutPaste) $doc.off("keydown",null,this.keyShortCutPaste,paste);
+        if (this.keyShortCutCopy) $doc.off("keydown",copy);
+        if (this.keyShortCutCut) $doc.off("keydown",cut);
+        if (this.keyShortCutPaste) $doc.off("keydown",paste);
         
         this.enabled = false;
         
