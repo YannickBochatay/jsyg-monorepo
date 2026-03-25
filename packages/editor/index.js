@@ -1437,7 +1437,7 @@ MainPoints.prototype = {
                                 firstSeg.x = pt.x;
                                 firstSeg.y = pt.y;
                                 new JSYG(that.list[0]).setCenter(posPt.x,posPt.y);
-                                if (needReplace) jNode.replaceSeg(0,jNode.getSeg(firstSeg));
+                                if (needReplace) jNode.replaceSeg(0,jNode.getSeg(0));
                             }
 
                             if (that.strengthClosingMagnet!=null && (seg === lastSeg || seg === firstSeg)) {
@@ -1477,25 +1477,23 @@ MainPoints.prototype = {
                                     }
                                 }
 
-                                if (i < jNode.nbSegs()-1) {
+                                let nextInd = (i < jNode.nbSegs()-1) ? i + 1 : 1;
+                                let next = jNode.getSeg(nextInd);
 
-                                    var next = jNode.getSeg(i+1);
+                                if (next.x1!=null && next.y1!=null) {
 
-                                    if (next.x1!=null && next.y1!=null) {
+                                    next.x1+=decX;
+                                    next.y1+=decY;
+                                    pt1 = new Vect(next.x1,next.y1).mtx(selfCTM);
+                                    pt2 = new Vect(seg.x,seg.y).mtx(selfCTM);
 
-                                        next.x1+=decX;
-                                        next.y1+=decY;
-                                        pt1 = new Vect(next.x1,next.y1).mtx(selfCTM);
-                                        pt2 = new Vect(seg.x,seg.y).mtx(selfCTM);
+                                    if (that.editor.ctrlsCtrlPoints.enabled && (item = ctrlPoints[nextInd])) {
 
-                                        if (that.editor.ctrlsCtrlPoints.enabled && (item = ctrlPoints[i+1])) {
+                                        new Path(item.path1)
+                                            .replaceSeg(0,'M',pt1.x,pt1.y)
+                                            .replaceSeg(1,'L',pt2.x,pt2.y);
 
-                                            new Path(item.path1)
-                                                .replaceSeg(0,'M',pt1.x,pt1.y)
-                                                .replaceSeg(1,'L',pt2.x,pt2.y);
-
-                                            new JSYG(item.pt1).setCenter(pt1.x,pt1.y);
-                                        }
+                                        new JSYG(item.pt1).setCenter(pt1.x,pt1.y);
                                     }
                                 }
 
