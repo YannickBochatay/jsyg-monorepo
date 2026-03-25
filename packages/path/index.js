@@ -188,9 +188,8 @@ Path.prototype.getSegList = function() {
  * @returns {Path}
  */
 Path.prototype.setSegList = function(segList) {
-    
-    var path = new Path();
-    segList.forEach(function(seg) { path.appendSeg(seg); });
+    const path = new Path();
+    segList.forEach(seg => path.appendSeg(seg));
     this.applyPath(path);
     return this;
 };

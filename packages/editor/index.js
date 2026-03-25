@@ -8,6 +8,7 @@ import "@jsyg/draggable";
 import Selection from "@jsyg/selection";
 import BoundingBox from "@jsyg/boundingbox";
 import Path from "@jsyg/path";
+import Container from "@jsyg/container";
 
 const style = document.createElement("style");
 
