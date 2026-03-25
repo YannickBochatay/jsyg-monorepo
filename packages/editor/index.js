@@ -966,7 +966,7 @@ CtrlPoints.prototype = {
 
                         drag = function(e) {
 
-                            var path1 = new Path(that.list[i].path1),
+                            let path1 = new Path(that.list[i].path1),
                             CTM = jPath.getMtx(svg),
                             jShape = new JSYG(this),
                             center = jShape.getCenter(),
@@ -978,25 +978,25 @@ CtrlPoints.prototype = {
                             seg.x1 = pt.x;
                             seg.y1 = pt.y;
 
-                            if (i>0 && that.linked) {
+                            if (that.linked && (i > 1 || jPath.isClosed())) {
 
-                                var prevSeg = list[i-1].seg;
+                                const prevInd = (i > 1) ? i - 1 : list.length - 1;
+                                const prevSeg = list[prevInd].seg;
 
                                 if (prevSeg.x2!=null && prevSeg.y2!=null) {
 
-                                    var angle = Math.atan2(seg.y1-prevSeg.y,seg.x1-prevSeg.x)+Math.PI,
-                                    path2 =new Path( that.list[i-1].path2),
+                                    const angle = Math.atan2(seg.y1-prevSeg.y,seg.x1-prevSeg.x)+Math.PI,
+                                    path2 =new Path( that.list[prevInd].path2),
                                     dist = Math.sqrt(Math.pow(prevSeg.x2-prevSeg.x,2) + Math.pow(prevSeg.y2-prevSeg.y,2));
 
-                                    const x2 = prevSeg.x2
                                     prevSeg.x2 = prevSeg.x + dist * Math.cos(angle);
                                     prevSeg.y2 = prevSeg.y + dist * Math.sin(angle);
 
                                     pt = new Vect(prevSeg.x2,prevSeg.y2).mtx(CTM);
-                                    new JSYG(that.list[i-1].pt2).setCenter(pt.x,pt.y);
+                                    new JSYG(that.list[prevInd].pt2).setCenter(pt.x,pt.y);
                                     path2.replaceSeg(0,'M',pt.x,pt.y);
 
-                                    if (needReplace) jPath.replaceSeg(i-1,prevSeg)
+                                    if (needReplace) jPath.replaceSeg(prevInd,prevSeg)
                                 }
                             }
 
@@ -1070,7 +1070,7 @@ CtrlPoints.prototype = {
 
                         drag = function(e) {
 
-                            var path2 = new Path(that.list[i].path2),
+                            let path2 = new Path(that.list[i].path2),
                             CTM = jPath.getMtx(svg),
                             jShape = new JSYG(this),
                             //oldX = seg.x2,
@@ -1084,23 +1084,24 @@ CtrlPoints.prototype = {
                             seg.x2 = pt.x;
                             seg.y2 = pt.y;
 
-                            if (i+1<list.length && that.linked) {
+                            if (that.linked && (i + 1 < list.length || jPath.isClosed())) {
                                 
-                                var nextSeg = list[i+1].seg;
+                                const nextInd = (i + 1 === list.length) ? 1 : i + 1;
+                                const nextSeg = list[nextInd].seg;
 
                                 if (nextSeg.x1!=null && nextSeg.y1!=null) {
 
-                                    var angle = Math.atan2(seg.y2-seg.y,seg.x2-seg.x)+Math.PI,
-                                    path1 = new Path(that.list[i+1].path1),
+                                    const angle = Math.atan2(seg.y2-seg.y,seg.x2-seg.x)+Math.PI,
+                                    path1 = new Path(that.list[nextInd].path1),
                                     dist = Math.sqrt(Math.pow(nextSeg.x1-seg.x,2) + Math.pow(nextSeg.y1-seg.y,2));
                                     nextSeg.x1 = seg.x + dist * Math.cos(angle);
                                     nextSeg.y1 = seg.y + dist * Math.sin(angle);
 
                                     pt = new Vect(nextSeg.x1,nextSeg.y1).mtx(CTM);
-                                    new JSYG(that.list[i+1].pt1).setCenter(pt.x,pt.y);
+                                    new JSYG(that.list[nextInd].pt1).setCenter(pt.x,pt.y);
                                     path1.replaceSeg(0,'M',pt.x,pt.y);
 
-                                    if (needReplace) jPath.replaceSeg(i+1,nextSeg)
+                                    if (needReplace) jPath.replaceSeg(nextInd,nextSeg)
                                 }
                             }
 
@@ -1316,9 +1317,9 @@ MainPoints.prototype = {
 
         if (opt) this.set(opt);
 
-        var container = this.editor.box.container;
+        const container = this.editor.box.container;
 
-        if (container && container.parentNode) this.show();
+        if (container?.parentNode) this.show();
 
         this.enabled = true;
         
@@ -1395,7 +1396,8 @@ MainPoints.prototype = {
             
             list = jNode.getSegList();
 
-            var isClosed = jNode.isClosed(),
+            let isClosed = jNode.isClosed(),
+            nbSegs = jNode.nbSegs(),
             mtxScreen,
             ctrlPoints = this.editor.ctrlsCtrlPoints.list;
 
@@ -1478,8 +1480,9 @@ MainPoints.prototype = {
                                     }
                                 }
 
-                                let nextInd = (i < jNode.nbSegs()-1) ? i + 1 : 1;
-                                let next = jNode.getSeg(nextInd);
+                                
+                                let nextInd = (i < nbSegs-1) ? i + 1 : 1;
+                                let next = (isClosed || i < nbSegs-1) ? jNode.getSeg(nextInd) : {};
 
                                 if (next.x1!=null && next.y1!=null) {
 
