@@ -1433,6 +1433,10 @@ MainPoints.prototype = {
                             firstSeg = jNode.getSeg(0),
                             lastSeg = jNode.getLastSeg();
 
+                            if (lastSeg.pathSegTypeAsLetter.toLowerCase() === "z") {
+                                lastSeg = jNode.getSeg(jNode.nbSegs() - 2);
+                            }
+                            
                             if (seg === lastSeg && isClosed) {
                                 firstSeg.x = pt.x;
                                 firstSeg.y = pt.y;
@@ -1443,6 +1447,7 @@ MainPoints.prototype = {
                             if (that.strengthClosingMagnet!=null && (seg === lastSeg || seg === firstSeg)) {
 
                                 var segRef = (seg === lastSeg) ? firstSeg : lastSeg;
+
                                 var ref = new Vect(segRef.x,segRef.y).mtx(mtxScreen);
 
                                 if (Math.sqrt(Math.pow(ref.x - e.clientX,2)+Math.pow(ref.y-e.clientY,2)) < that.strengthClosingMagnet) {
