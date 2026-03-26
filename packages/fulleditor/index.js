@@ -9,7 +9,7 @@ import UndoRedo from "@jsyg/undoredo"
 
 const style = document.createElement("style");
 
-style.innerHTML = `
+style.innerHTML = /*css*/`
 .jsyg-doc-frame {
   fill: #FFF;
   stroke: #000;
@@ -112,10 +112,14 @@ FullEditor.prototype.registerKeyShortCut = function(key,fct) {
     }
     
     if (this._keyShortCuts[key]) this._disableKeyShortCut(key);
+
+    const wrappedFct = function(e) {
+        if (JSYG.checkShortcut(e, key)) fct(e);
+    };
     
-    this._keyShortCuts[key] = fct;
+    this._keyShortCuts[key] = wrappedFct
     
-    if (this.enabled) this._enableKeyShortCut(key,fct);
+    if (this.enabled) this._enableKeyShortCut(key,wrappedFct);
     
     return this;
 };
@@ -175,7 +179,7 @@ FullEditor.prototype._enableKeyShortCut = function(key,fct) {
     
     if (typeof fct != 'function') throw new Error(typeof fct + " instead of function expected");
     
-    new JSYG(document).on('keydown',null,key,fct);
+    new JSYG(document).on('keydown', fct);
     
     return this;
 };
@@ -184,7 +188,7 @@ FullEditor.prototype._disableKeyShortCut = function(key,fct) {
     
     if (typeof fct != 'function') throw new Error(typeof fct + " instead of function expected");
     
-    new JSYG(document).off('keydown',fct);
+    new JSYG(document).off('keydown', fct);
     
     return this;
 };

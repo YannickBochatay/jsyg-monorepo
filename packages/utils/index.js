@@ -2727,7 +2727,16 @@ JSYG.prototype.getUniqueSelector = function () {
     
     return path;
 };
-    
+
+JSYG.checkShortcut = function(e, shortcut) {
+    const [meta, key] = shortcut.split(/\s*\+\s*/);
+
+    if (!key) return e.key === meta;
+    else if (e.key.toLowerCase() !== key.toLowerCase()) return false;
+    else if (meta.toLowerCase() === "ctrl") return (e.ctrlKey || e.metaKey);
+    else if (meta.toLowerCase() === "shift") return e.shiftKey;
+}
+   
 JSYG.Matrix = Matrix;
 JSYG.Vect = Vect;
 JSYG.Point = Point;
