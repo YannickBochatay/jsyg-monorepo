@@ -9,6 +9,7 @@ import Selection from "@jsyg/selection";
 import BoundingBox from "@jsyg/boundingbox";
 import Path from "@jsyg/path";
 import Container from "@jsyg/container";
+import { ucfirst } from "@jsyg/strutils";
 
 const style = document.createElement("style");
 
@@ -92,10 +93,6 @@ const ctrls = ['Drag','Resize','Rotate','CtrlPoints','MainPoints'],
 plugins = ['box','selection','clipBoard'];
 
 // JSYG.support.needReplaceSeg = true
-
-function ucfirst(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
 
 /**
  * <strong>nécessite le module Editor</strong>
