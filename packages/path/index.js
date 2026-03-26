@@ -1,31 +1,6 @@
 import JSYG from "@jsyg/core";
 import "pathseg";
 
-(function() {
-    
-    const path = new JSYG('<path>').attr('d','M0,0 L10,10')[0];
-
-    JSYG.support.needReplaceSeg = (function() {
-        
-        const seg = path.pathSegList.getItem(1);
-        seg.x = 20;
-        
-        return path.pathSegList.getItem(1).x !== 20;
-        
-    })();
-    
-    JSYG.support.needCloneSeg = (function() {
-        
-        const path2 = new JSYG('<path>').attr('d','M0,0 L10,10')[0];
-        const seg = path.pathSegList.getItem(1);
-        
-        path2.pathSegList.appendItem(seg);
-        
-        return path.pathSegList.numberOfItems === 1;
-        
-    })();
-    
-}());
 
 function distance(pt1,pt2) {
     return Math.sqrt( Math.pow(pt1.x-pt2.x,2) + Math.pow(pt1.y-pt2.y,2) );
@@ -214,7 +189,7 @@ Path.prototype.getLastSeg = function() {
  * path.addSeg('M',0,0);
  */
 Path.prototype.appendSeg = function(seg) {
-    this[0].pathSegList.appendItem( JSYG.support.needCloneSeg ? this.cloneSeg(seg) : seg );
+    this[0].pathSegList.appendItem(seg);
     return this;
 };
 
@@ -225,7 +200,7 @@ Path.prototype.appendSeg = function(seg) {
  * @returns {Path}
  */
 Path.prototype.insertSeg = function(seg,i) {
-    this[0].pathSegList.insertItemBefore( JSYG.support.needCloneSeg ? this.cloneSeg(seg) : seg, i);
+    this[0].pathSegList.insertItemBefore(seg, i);
     return this;
 };
 
@@ -241,7 +216,6 @@ Path.prototype.replaceSeg = function(i,seg) {
         var args = Array.prototype.slice.call(arguments,1);
         seg = this.createSeg.apply(this,args);
     }
-    else if (JSYG.support.needCloneSeg) seg = this.cloneSeg(seg);
     
     this[0].pathSegList.replaceItem(seg,i);
     return this;

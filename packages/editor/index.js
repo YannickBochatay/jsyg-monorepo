@@ -92,8 +92,6 @@ document.head.append(style);
 const ctrls = ['Drag','Resize','Rotate','CtrlPoints','MainPoints'],
 plugins = ['box','selection','clipBoard'];
 
-// JSYG.support.needReplaceSeg = true
-
 /**
  * <strong>nécessite le module Editor</strong>
  * Edition d'éléments (positionnement, dimensions, rotation, et édition des formes pour les éléments SVG).
@@ -898,7 +896,6 @@ CtrlPoints.prototype = {
         var svg = jNode.offsetParent('farthest'),
         CTM = jNode.getMtx(svg),
         tag = jNode.getTag(),
-        needReplace = true, // JSYG.support.needReplaceSeg, ne fonctionne pas avec le polyfill pathseg, je ne comprends pas pourquoi
         list = [],N,
         that = this,
         start = function(e){
@@ -993,11 +990,11 @@ CtrlPoints.prototype = {
                                     new JSYG(that.list[prevInd].pt2).setCenter(pt.x,pt.y);
                                     path2.replaceSeg(0,'M',pt.x,pt.y);
 
-                                    if (needReplace) jPath.replaceSeg(prevInd,prevSeg)
+                                    jPath.replaceSeg(prevInd,prevSeg)
                                 }
                             }
 
-                            if (needReplace) jPath.replaceSeg(i,seg);
+                            jPath.replaceSeg(i,seg);
 
                             that.editor.trigger('drag',node,e);
                             that.trigger('drag',node,e);
@@ -1098,11 +1095,11 @@ CtrlPoints.prototype = {
                                     new JSYG(that.list[nextInd].pt1).setCenter(pt.x,pt.y);
                                     path1.replaceSeg(0,'M',pt.x,pt.y);
 
-                                    if (needReplace) jPath.replaceSeg(nextInd,nextSeg)
+                                    jPath.replaceSeg(nextInd,nextSeg)
                                 }
                             }
 
-                            if (needReplace) jPath.replaceSeg(i,seg);
+                            jPath.replaceSeg(i,seg);
 
                             that.editor.trigger('drag',node,e);
                             that.trigger('drag',node,e);
@@ -1360,7 +1357,6 @@ MainPoints.prototype = {
         tag = jNode.getTag(),
         list=[],N,
         that = this,
-        needReplace = true, //JSYG.support.needReplaceSeg,
         start = function(e){
             new JSYG(that.container).appendTo(that.editor.box.container);
             that.editor.trigger('start',node,e);
@@ -1441,7 +1437,7 @@ MainPoints.prototype = {
                                 firstSeg.x = pt.x;
                                 firstSeg.y = pt.y;
                                 new JSYG(that.list[0]).setCenter(posPt.x,posPt.y);
-                                if (needReplace) jNode.replaceSeg(0,jNode.getSeg(0));
+                                jNode.replaceSeg(0,jNode.getSeg(0));
                             }
 
                             if (that.strengthClosingMagnet!=null && (seg === lastSeg || seg === firstSeg)) {
@@ -1503,7 +1499,7 @@ MainPoints.prototype = {
                                     }
                                 }
 
-                                if (needReplace) jNode.replaceSeg(i,seg);
+                                jNode.replaceSeg(i,seg);
                             }
 
                             that.editor.trigger('drag',node,e);
