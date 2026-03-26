@@ -1,7 +1,13 @@
+* {
+  box-sizing:border-box;
+}
+
 svg {
   border:1px solid gray;
   background-color:#ddd;
   display:inline-block;
+  width:calc(100% - 20px);
+  height:80vh;
 }
 form {
   display:inline-block;
