@@ -1244,7 +1244,7 @@ FullEditor.prototype._initZoomAndPan = function() {
     this.zoomAndPan.resizable.keepRatio = false;
     
     this.zoomAndPan.mouseWheelZoom.key = "ctrl";
-    
+
     this.zoomAndPan.on("change",function() {
         that._updateBoundingBoxes();
         that.shapeEditor.update();
@@ -1454,8 +1454,6 @@ FullEditor.prototype.enable = function(opt) {
     this._insertFrame();
     
     //on force les valeurs pour exécuter les fonctions définies dans Object.defineProperty
-    if (this._editPathCtrlPoints) this._editPathCtrlPoints = true;
-    if (this._resizable) this._resizable = true;
     this.editableShapes = this.editableShapes;
     
     this.shapeEditor.enableCtrls('drag','resize','rotate','mainPoints');

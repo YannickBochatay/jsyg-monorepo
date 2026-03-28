@@ -223,7 +223,7 @@ Resizable.prototype.start = function(e) {
     var jNode = new JSYG(this.node),
     parent = jNode.offsetParent();
     
-    if (!isNaN(this.bounds)) {
+    if (JSYG.isNumeric(this.bounds)) {
         var dimParent = parent.getDim();
         this.minLeft = - this.bounds;
         this.minTop = - this.bounds;

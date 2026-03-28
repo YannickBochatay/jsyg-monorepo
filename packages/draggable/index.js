@@ -1,4 +1,5 @@
 import JSYG from "@jsyg/core"
+import StdConstruct from "@jsyg/stdconstruct";
 
 /**
  * Aimants vers lesquels l'objet sera attiré
@@ -6,7 +7,7 @@ import JSYG from "@jsyg/core"
  */
 function Guides() {};
 
-Guides.prototype = new JSYG.StdConstruct();
+Guides.prototype = new StdConstruct();
 
 Guides.prototype.constructor = Guides;
 /**
@@ -76,7 +77,7 @@ function Draggable(arg,opt) {
 };
 
 function shape(node) {
-    return ['path','polyline','polygon','g','text'].indexOf(node.tagName) !== -1 ?  'noAttribute' : 'shape';
+    return ['path','polyline','polygon','g','text'].includes(node.tagName) ?  'noAttribute' : 'shape';
 };
 
 function rap(dec) {
@@ -85,7 +86,7 @@ function rap(dec) {
     else if (dec === 'bottom' || dec === "right") return 1;
 };
     
-Draggable.prototype = new JSYG.StdConstruct();
+Draggable.prototype = new StdConstruct();
 
 Draggable.prototype.constructor = Draggable;
 
@@ -186,7 +187,7 @@ Draggable.prototype.start = function(e) {
     var jNode = new JSYG(this.node),
     parent = jNode.offsetParent();
     
-    if (!isNaN(this.bounds)) {
+    if (JSYG.isNumeric(this.bounds)) {
         
         var dimParent = parent.getDim();
         this.minLeft = - this.bounds;

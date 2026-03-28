@@ -1223,7 +1223,7 @@ JSYG.prototype.getShift = function(pivotX,pivotY) {
     pivotX = (pivotX != null) ? pivotX : transfOrigin[0];
     pivotY = (pivotY != null) ? pivotY : transfOrigin[1];
     
-    if (!isNaN(pivotX) && !isNaN(pivotY)) return new Vect(parseFloat(pivotX),parseFloat(pivotY));
+    if (JSYG.isNumeric(pivotX) && JSYG.isNumeric(pivotY)) return new Vect(parseFloat(pivotX),parseFloat(pivotY));
     
     var box = this.getDim(), // dimensions réelles de l'élément (avant transformation(s))
     translX,translY, 
@@ -2735,6 +2735,10 @@ JSYG.checkShortcut = function(e, shortcut) {
     else if (e.key.toLowerCase() !== key.toLowerCase()) return false;
     else if (meta.toLowerCase() === "ctrl") return (e.ctrlKey || e.metaKey);
     else if (meta.toLowerCase() === "shift") return e.shiftKey;
+}
+
+JSYG.isNumeric = function(value) {
+    return (typeof value === "number" && Number.isFinite(value)) || (typeof value === "string" && !isNaN(value))
 }
    
 JSYG.Matrix = Matrix;
