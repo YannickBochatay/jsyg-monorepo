@@ -1,3 +1,7 @@
+:root {
+  font-family:sans-serif;
+  font-size:16px;
+}
 svg#content {
   border:1px solid gray;
   background-color:#ddd;
@@ -5,6 +9,9 @@ svg#content {
   width:100%;
   height:80vh;
   box-sizing:border-box;
+}
+svg:not(:root){ 
+  overflow:hidden;
 }
 form {
   display:inline-block;

@@ -7,6 +7,32 @@ svgEditor.editableShapes = "> *";
 
 svgEditor.enable();
 
+svgEditor.newDocument(500,500);
+
+svgEditor.enableDropFiles();
+
+svgEditor.enableMouseWheelZoom();
+
+$("#newDocument").on("click",function() {
+    svgEditor.newDocument( $('#width').val(), $('#height').val() );
+});
+
+$("#openDocument").on("click",function() {
+    svgEditor.chooseFile().then(svgEditor.loadFile).catch(alert);
+});
+
+$("#openImage").on("click",function() {
+    svgEditor.chooseFile().then(svgEditor.loadImageAsDoc).catch(alert);
+});
+
+
+/*
+const dialog = document.querySelector('#exampleChoice');
+
+$('#openExample').on("click",function() {
+    dialog.showModal();
+});
+
 
 ["left","center","right","top","middle","bottom"].forEach(function(type) {
 
@@ -28,19 +54,6 @@ $("#insertText").on("click",function() {
     $(this).trigger("blur");
 });
 
-$("#newDocument").on("click",function() {
-    svgEditor.newDocument( $('#width').val(), $('#height').val() );
-});
-
-$("#openDocument").on("click",function() {
-
-    svgEditor.chooseFile().then(svgEditor.loadFile).catch(alert);
-});
-
-$("#openImage").on("click",function() {
-
-    svgEditor.chooseFile().then(svgEditor.loadImageAsDoc).catch(alert);
-});
 
 $("#insertImage").on("click",function() {
 
@@ -57,11 +70,7 @@ $("#downloadSVG").on("click",function() {
     svgEditor.download("png");
 });
 
-const dialog = document.querySelector('#exampleChoice');
 
-$('#openExample').on("click",function() {
-    dialog.showModal();
-});
 
 $('#confirmExample').on("click",function() {
     dialog.close();
@@ -178,3 +187,4 @@ svgEditor.newDocument(500,500);
 svgEditor.enableDropFiles();
 
 svgEditor.enableMouseWheelZoom();
+ */

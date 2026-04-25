@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "complete and very simple API to create svg editor",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "example": "examples"
   },
@@ -25,8 +27,8 @@
   },
   "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme",
   "dependencies": {
-    "@jsyg/core": "^1.0.0",
     "@jsyg/alignment": "^1.0.0",
+    "@jsyg/core": "^1.0.0",
     "@jsyg/editor": "^1.0.0",
     "@jsyg/pathdrawer": "^1.0.0",
     "@jsyg/polylinedrawer": "^1.0.0",

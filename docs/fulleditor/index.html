@@ -2,282 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSYG Full Editor</title>
     <link href="styles.css" rel="stylesheet">
     <script src="../../importmap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aria-menus" type="module"></script>
     <script src="script.js" type="module"></script>
   </head>
   <body>
+    <menu-bar>
+      <menu-item nocaret>
+        File
+        <menu-list slot="menu">
+          <menu-item id="newDocument">New File</menu-item>
+          <menu-item id="openDocument">Open SVG File</menu-item>
+          <menu-item id="openImage">Open Image File</menu-item>
+          <menu-item>Open Example</menu-item>
+        </menu-list>
+      </menu-item>
+      <menu-item nocaret>
+        Options
+        <menu-list slot="menu">
+          <menu-item-checkbox id="editPosition" checked>Edit position</menu-item-checkbox>
+          <menu-item-checkbox id="editSize" checked>Edit size</menu-item-checkbox>
+          <menu-item-checkbox id="editRotation" checked>Edit rotation</menu-item-checkbox>
+          <menu-item-checkbox id="editText" checked>Edit text</menu-item-checkbox>
+          <menu-item-checkbox id="editPathMainPoints" checked>Edit paths main points</menu-item-checkbox>
+          <menu-item-checkbox id="editPathCtrlPoints">Edit paths control points</menu-item-checkbox>
+          <menu-item-checkbox id="autoSmoothPaths">Auto-smooth paths</menu-item-checkbox>
+          <menu-item-checkbox id="useTransformAttr">Use transform attribute</menu-item-checkbox>
+          <menu-item-checkbox id="keepShapesRatio">Keep Shapes ratio</menu-item-checkbox>
+          <menu-item-checkbox id="canvasResizable">Canvas resizable</menu-item-checkbox>
+        </menu-list>
+      </menu-item>
+    </menu-bar>
     <svg id="content"></svg>
-        
-    <div class="col-md-3">
-                  
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  File
-                </a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                <fieldset>
-                  <button class="btn btn-default" id="newDocument" type="button">New document</button>
-                  
-                  <button class="btn btn-default" id="openDocument" type="button">Open SVG file</button>
-                  
-                  <button class="btn btn-default" id="openImage" type="button">Open Image file</button>
-                  
-                  <button class="btn btn-default" id="openExample" type="button">Open example</button>
-                  
-                  <button class="btn btn-default" id="insertImage" type="button">Insert Image</button>
-                  <br/>
-                  <br/>
-                  <div class="form-group">
-                    <label for="width">Width : </label>
-                    <input type="text" class="form-control" id="width" placeholder="width" value="500"/>
-                  </div>
-                  <div class="form-group">
-                    <label for="height">Height : </label>
-                    <input type="text" class="form-control" id="height" placeholder="height" value="500"/>
-                  </div>
-                  <br/>
-                  <br/>
-                  <button class="btn btn-default" id="downloadSVG" type="button">Download SVG</button>
-                  <button class="btn btn-default" id="downloadPNG" type="button">Download PNG</button>
-                  <button class="btn btn-default" id="print" type="button">Print</button>
-                </fieldset>
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Edit
-                </a>
-              </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-              <div class="panel-body">
-                <fieldset>
-                  
-                  <button class="btn btn-default" id="copy" type="button">
-                    Copy
-                  </button>
-                  
-                  <button class="btn btn-default" id="cut" type="button">
-                    Cut
-                  </button>
-                  
-                  <button class="btn btn-default" id="paste" type="button">
-                    Paste
-                  </button>
-                  
-                  <button class="btn btn-default" id="remove" type="button">
-                    Delete
-                  </button>
-                  <br/><br/>
-                  <button class="btn btn-default" id="undo" type="button">
-                    Undo
-                  </button>
-                  
-                  <button class="btn btn-default" id="redo" type="button">
-                    Redo
-                  </button>
-                  <br/>
-                  <br/>
-                  You can use usual key shortcuts (<code>Ctrl+C</code>, <code>Ctrl+X</code>, <code>Ctrl+V</code>, <code>Del</code>, <code>Ctrl+Z</code>, <code>Ctrl+Y</code>)
-                </fieldset>
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#viewPanel" aria-expanded="false" aria-controls="viewPanel">
-                  View
-                </a>
-              </h4>
-            </div>
-            <div id="viewPanel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-              <div class="panel-body">
-                <fieldset>
-                  <p>Use <code>Ctrl+mousewheel</code> to zoom in and out.</p>
-                  <button class="btn btn-default" id="zoomIn" type="button">
-                    Zoom in
-                  </button>
-                  <button class="btn btn-default" id="zoomOut" type="button">
-                    Zoom out
-                  </button>
-                  <button class="btn btn-default" id="mousePan" type="button">Mouse Pan</button>
-                  <button class="btn btn-default" id="marqueeZoom" type="button">Marquee Zoom</button>
-                  <button class="btn btn-default" id="fitToCanvas" type="button">Fit to canvas</button>
-                  <button class="btn btn-default" id="fitToDoc" type="button">Fit to document</button>
-                  <button class="btn btn-default" id="realSize" type="button">Real size</button>
-                  
-                </fieldset>
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingFive">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#drawShapes" aria-expanded="false" aria-controls="drawShapes">
-                  Draw
-                </a>
-              </h4>
-            </div>
-            <div id="drawShapes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
-              <div class="panel-body">
-                <fieldset>
-                  <select id="shape" class="form-control">
-                    <option>rect</option>
-                    <option>circle</option>
-                    <option>ellipse</option>
-                    <option>line</option>
-                    <option>polyline</option>
-                    <option>polygon</option>
-                    <option>path</option>
-                    <option>freehand path</option>
-                    <option>text</option>
-                  </select>
-                </fieldset>
-              </div>
-            </div>
-          </div>
-          
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingSix">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                  Hierarchy
-                </a>
-              </h4>
-            </div>
-            <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSix">
-              <div class="panel-body">
-                <fieldset>
-                  
-                  <p>Use <code>Ctrl+click</code> to select multiple elements (or draw a selection with mouse).</p>
-                  
-                  <button class="btn btn-default" id="group" type="button">Group elements</button>
-                  
-                  <button class="btn btn-default" id="ungroup" type="button">Ungroup elements</button>
-                  
-                  <br/>
-                  <br/>
-                  Align selected elements<br/>
-                  <button class="btn btn-default" id="alignLeft" type="button">left</button>
-                  <button class="btn btn-default" id="alignCenter" type="button">center</button>
-                  <button class="btn btn-default" id="alignRight" type="button">right</button>
-                  <button class="btn btn-default" id="alignTop" type="button">top</button>
-                  <button class="btn btn-default" id="alignMiddle" type="button">middle</button>
-                  <button class="btn btn-default" id="alignBottom" type="button">bottom</button>
-                  
-                  <br/>
-                  <br/>
-                  
-                  <button class="btn btn-default" id="moveToBack" type="button">Move to back</button>
-                  <button class="btn btn-default" id="moveBack" type="button">Move back</button>
-                  <button class="btn btn-default" id="moveFront" type="button">Move front</button>
-                  <button class="btn btn-default" id="moveToFront" type="button">Move to front</button>
-                  
-                </fieldset>
-              </div>
-            </div>
-          </div>
-          
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingSeven">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                  Options
-                </a>
-              </h4>
-            </div>
-            <div id="collapseSeven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSeven">
-              <div class="panel-body">
-                <fieldset>
-                  
-                  <label>
-                    <input type="checkbox" id="editPosition" checked="checked"/> Edit position
-                  </label>
-                  <br/>
-                  <label>
-                    <input type="checkbox" id="editSize" checked="checked"/> Edit size
-                  </label>
-                  <br/>
-                  <label>
-                    <input type="checkbox" id="editRotation" checked="checked"/> Edit rotation
-                  </label>
-                  <br/>
-                  
-                  <label>
-                    <input type="checkbox" id="editText" checked="checked"/> Edit text
-                  </label>
-                  <br/>
-                  
-                  <label>
-                    <input type="checkbox" id="editPathMainPoints" checked="checked"/> Edit paths main points
-                  </label>
-                  
-                  <label>
-                    <input type="checkbox" id="editPathCtrlPoints"/> Edit paths control points
-                  </label>
-                  
-                  <br/>
-                  
-                  <label>
-                    <input type="checkbox" id="autoSmoothPaths"/> Auto-smooth paths
-                  </label>
-                  
-                  <br/>
-                  
-                  <label>
-                    <input type="checkbox" id="useTransformAttr"/> Use transform attribute
-                  </label>
-                  
-                  <br/>
-                  
-                  <label>
-                    <input type="checkbox" id="keepShapesRatio"/> Keep Shapes ratio
-                  </label>
-                  
-                  <br/>
-                  <label>
-                    <input type="checkbox" id="canvasResizable" checked="checked"/> Canvas resizable
-                  </label>
-                  
-                </fieldset>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <dialog id="exampleChoice">
-          <div class="modal-content">
-            <header>
-              <button aria-label="close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h4 class="modal-title" id="myModalLabel">Choose example</h4>
-            </header>
-            <main>
-              <select id="examples" class="form-control">
-                <option value="firefox">firefox logo</option>
-                <option value="linux">linux logo</option>
-              </select>
-            </main>
-            <footer>
-              <button type="button">Cancel</button>
-              <button type="button" id="confirmExample">OK</button>
-            </footer>
-          </div>
-        </dialog>
-        
-    </div>
   </body>
 </html>
