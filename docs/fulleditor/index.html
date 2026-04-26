@@ -17,16 +17,41 @@
           <menu-item id="newDocument">New File</menu-item>
           <menu-item id="openDocument">Open SVG File</menu-item>
           <menu-item id="openImage">Open Image File</menu-item>
-          <menu-item>Open Example</menu-item>
+          <menu-item id="openExample">Open Example</menu-item>
           <menu-separator></menu-separator>
           <menu-item id="downloadSVG">Export SVG</menu-item>
           <menu-item id="downloadPNG">Export to PNG</menu-item>
+          <menu-separator></menu-separator>
+          <menu-item id="print">Print</menu-item>
+        </menu-list>
+      </menu-item>
+      <menu-item nocaret>
+        Edition
+        <menu-list slot="menu">
+          <menu-item id="copy">Copy</menu-item>
+          <menu-item id="cut">Cut</menu-item>
+          <menu-item id="paste">Paste</menu-item>
+          <menu-separator></menu-separator>
+          <menu-item id="undo">Undo</menu-item>
+          <menu-item id="redo">Redo</menu-item>
+          <menu-separator></menu-separator>
+          <menu-item id="group">Group</menu-item>
+          <menu-item id="ungroup">Ungroup</menu-item>
         </menu-list>
       </menu-item>
       <menu-item nocaret>
         Insert
         <menu-list slot="menu">
           <menu-item id="insertText">Insert Text</menu-item>
+          <menu-item id="insertImage">Insert Image</menu-item>
+          <menu-item id="rect">Insert Rect</menu-item>
+          <menu-item id="circle">Insert Circle</menu-item>
+          <menu-item id="ellipse">Insert Ellipse</menu-item>
+          <menu-item id="line">Insert Line</menu-item>
+          <menu-item id="polyline">Insert Polyline</menu-item>
+          <menu-item id="polygon">Insert Polygon</menu-item>
+          <menu-item id="path">Insert Path</menu-item>
+          <menu-item id="freehand-path">Insert Free Hand Path</menu-item>
         </menu-list>
       </menu-item>
       <menu-item nocaret>
@@ -55,6 +80,8 @@
           <menu-item id="fitToCanvas">Fit to Canvas</menu-item>
           <menu-item id="fitToDoc">Fit to Document</menu-item>
           <menu-item id="realSize">Real Size</menu-item>
+          <menu-separator></menu-separator>
+          <menu-item-checkbox id="mousePan">Mouse Pan</menu-item-checkbox>
         </menu-list>
       </menu-item>
       <menu-item nocaret>
@@ -74,5 +101,26 @@
       </menu-item>
     </menu-bar>
     <svg id="content"></svg>
+    <dialog id="exampleChoice">
+      <label for="example-field">Choose example</label>
+      <br>
+      <select multiple id="example-field">
+        <option value="firefox">Firefox Logo</option>
+        <option value="linux">Linux Logo</option>
+      </select>
+    </dialog>
+    <dialog id="dimensions">
+      <form>
+        <label>
+          Width : 
+          <input id="width">
+        </label>
+        <label>
+          Height : 
+          <input id="height">
+        </label>
+        <input type="submit" value="Submit">
+      </form>
+    </dialog>
   </body>
 </html>

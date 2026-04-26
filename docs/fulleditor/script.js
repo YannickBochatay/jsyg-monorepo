@@ -19,28 +19,39 @@ svgEditor.on("load", function () {
   $('#height').val(dim.height);
 });
 
+svgEditor.loadURL('img/linux.svg')
+
 const menuBar = document.querySelector("menu-bar");
 
 svgEditor.registerKeyShortCut({
-  "ctrl+c": svgEditor.copy,
-  "ctrl+x": svgEditor.cut,
-  "ctrl+v": svgEditor.paste,
-  "ctrl+z": svgEditor.undo,
-  "ctrl+y": svgEditor.redo,
-  "ctrl+a":svgEditor.selectAll,
-  "del": svgEditor.remove,
-  "up" : function(e) { e.preventDefault(); svgEditor.dim("y","-=1"); },
-  "down" : function(e) { e.preventDefault(); svgEditor.dim("y","+=1"); },
-  "left" : function(e) { e.preventDefault(); svgEditor.dim("x","-=1"); },
-  "right" : function(e) { e.preventDefault(); svgEditor.dim("x","+=1"); }
+  "Ctrl+c": svgEditor.copy,
+  "Ctrl+x": svgEditor.cut,
+  "Ctrl+v": svgEditor.paste,
+  "Ctrl+z": svgEditor.undo,
+  "Ctrl+y": svgEditor.redo,
+  "Ctrl+a":svgEditor.selectAll,
+  "Delete": svgEditor.remove,
+  "ArrowUp" : function(e) { e.preventDefault(); svgEditor.dim("y","-=1"); },
+  "ArrowDown" : function(e) { e.preventDefault(); svgEditor.dim("y","+=1"); },
+  "ArrowLeft" : function(e) { e.preventDefault(); svgEditor.dim("x","-=1"); },
+  "ArrowRight" : function(e) { e.preventDefault(); svgEditor.dim("x","+=1"); }
 });
 
 ////////////////////////////////
 // Menu File
+const dialogDimensions = $("#dimensions")[0];
 
 $("#newDocument").on("click", function () {
-  svgEditor.newDocument($('#width').val(), $('#height').val());
+  dialogDimensions.showModal();
 });
+
+const dimensionsForm = $("#dimensions form");
+
+dimensionsForm.on("submit", e => {
+  e.preventDefault();
+  svgEditor.newDocument($('#width').val(), $('#height').val());
+  dialogDimensions.close();
+})
 
 $("#openDocument").on("click", function () {
   svgEditor.chooseFile().then(svgEditor.loadFile).catch(alert);
@@ -50,12 +61,35 @@ $("#openImage").on("click", function () {
   svgEditor.chooseFile().then(svgEditor.loadImageAsDoc).catch(alert);
 });
 
+const dialogExample = $('#exampleChoice')[0];
+
+$('#openExample').on("click",function() {
+    dialogExample.showModal();
+});
+
+$('#example-field').on("change", e => {
+  dialogExample.close();
+  svgEditor.loadURL(`img/${e.target.value}.svg`);
+})
+
 $("#downloadSVG").on("click",function() {
   svgEditor.download("svg");
 });
 
 $("#downloadPNG").on("click",function() {
   svgEditor.download("png");
+});
+
+$('#print').on("click",function() { svgEditor.print(); });
+
+////////////////////////////////
+// Menu Edition
+
+["remove","copy","cut","paste","undo","redo","group","ungroup"].forEach(function(action) {
+
+    $('#'+action).on("click",function() {
+        svgEditor[action]();
+    });
 });
 
 ////////////////////////////////
@@ -86,6 +120,15 @@ $('#zoomOut').on("click",function() {
     svgEditor.zoom(-10);
 });
 
+$('#mousePan').on("change",function() {
+  if (this.checked) svgEditor.enableMousePan()
+  else {
+    svgEditor.disableMousePan();
+    svgEditor.enableSelection();
+  }
+  menuBar.close();
+});
+
 ////////////////////////////////
 // Menu Options
 
@@ -100,7 +143,7 @@ $('#zoomOut').on("click",function() {
   });
 
 ////////////////////////////////
-// Menu Disposition
+// Menu Position
 ["left","center","right","top","middle","bottom"].forEach(function(type) {
   $('#align'+$.ucfirst(type)).on("click",function() {
     svgEditor.align(type);
@@ -113,39 +156,36 @@ $('#zoomOut').on("click",function() {
   });
 });
 
+/////////////////////////////////
+// Menu Insert
+
 $("#insertText").on("click",function() {
   const text = $("<text>").text("Bonjour le monde");
   svgEditor.enableInsertElement(text);
   menuBar.close();
 });
 
-/*
-const dialog = document.querySelector('#exampleChoice');
-
-$('#openExample').on("click",function() {
-    dialog.showModal();
-});
-
-
-
-
-
-
-
 $("#insertImage").on("click",function() {
-
-    svgEditor.chooseFile().then(svgEditor.insertImageFile).catch(alert);
+  svgEditor.chooseFile().then(svgEditor.insertImageFile).catch(alert);
 });
 
+function drawShape() {
+  let type = this.id;
+  if (type.includes("path")) {
+    svgEditor.drawingPathMethod = (type == "path") ? "point2point" : "freehand";
+    type = "path";
+  }
+  const shape = $("<"+type+">").addClass("perso");
+  svgEditor.drawShape(shape);
+  menuBar.close();
+}
 
-
-
-
-$('#confirmExample').on("click",function() {
-    dialog.close();
-    svgEditor.loadURL('img/' + $('#examples').val() + '.svg');
+["rect", "circle", "ellipse", "line", "polyline", "polygon", "path", "freehand-path"].forEach(type => {
+  $("#"+type).on("click", drawShape);
 });
+  
 
+/*
 
 
 $('#width').on("change",function() {
@@ -156,54 +196,4 @@ $('#height').on("change",function() {
     svgEditor.dimDocument({height:this.value});
 });
 
-$('#viewPanel').on("hide.bs.collapse",function() {
-    svgEditor.disableMousePan();
-    $('#mousePan').removeClass("active");
-});
-
-$('#mousePan').on("click",function() {
-    svgEditor.enableMousePan();
-    $(this).addClass("active");
-});
-
-$('#drawShapes').on({
-    "show.bs.collapse":function () {
-        $('#shape').trigger("change");
-    },
-    "hide.bs.collapse":function() {
-        svgEditor.disableShapeDrawer();
-        svgEditor.disableInsertElement();
-        svgEditor.enableSelection();
-    }
-});
-
-$('#shape').on("change",function() {
-
-    const type = this.value;
-
-    if (type.includes("path")) {
-        svgEditor.drawingPathMethod = (type == "path") ? "point2point" : "freehand";
-        type = "path";
-    }
-
-    const shape = $("<"+type+">").addClass("perso");
-
-    if (type == "text") svgEditor.enableInsertElement(shape);
-    else svgEditor.enableShapeDrawer(shape);
-});
-
-
-["remove","copy","cut","paste","undo","redo","group","ungroup"].forEach(function(action) {
-
-    $('#'+action).on("click",function() {
-        svgEditor[action]();
-    });
-});
-
-
-
-$('#print').on("click",function() { svgEditor.print(); });
-
-
-
- */
+*/

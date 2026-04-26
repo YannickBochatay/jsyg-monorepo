@@ -2031,7 +2031,7 @@ FullEditor.prototype.print = function() {
     return this.toSVGDataURL().then(function(url) {
         
         return new Promise(function(resolve) {
-            var win = window.open(url);
+            const win = window.open(url);
             win.onload = function() { win.print(); resolve(); };
         })
     });
@@ -2066,7 +2066,7 @@ FullEditor.prototype.download = function(format) {
     
     return this.toDataURL(format).then(function(url) {
         
-        var a = new JSYG('<a>').attr({
+        const a = new JSYG('<a>').attr({
             href:url,
             download:"file."+format
         }).appendTo('body');
@@ -2084,7 +2084,7 @@ FullEditor.prototype.remove = function() {
     
     if (!this.shapeEditor.display) return this;
     
-    var target = this.shapeEditor.target();
+    const target = this.shapeEditor.target();
     
     this.shapeEditor.hide();
     
