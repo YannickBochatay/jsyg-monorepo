@@ -2735,6 +2735,7 @@ JSYG.checkShortcut = function(e, shortcut) {
     else if (e.key.toLowerCase() !== key.toLowerCase()) return false;
     else if (meta.toLowerCase() === "ctrl") return (e.ctrlKey || e.metaKey);
     else if (meta.toLowerCase() === "shift") return e.shiftKey;
+    else if (meta.toLowerCase() === "alt") return e.altKey;
 }
 
 JSYG.isNumeric = function(value) {
