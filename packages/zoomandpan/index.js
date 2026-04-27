@@ -268,6 +268,8 @@ ZoomAndPan.prototype._getBounds = function(ctm) {
     return bounds;
 };
 
+const relativeUnitRegex = /(\d+(?:\.\d+)?|\.\d+)\s*(em|ex|ch|rem|vw|vh|vmin|vmax|%)/i;
+
 /**
  * Active la gestion du zoom et panoramique.
  * Cette méthode insère un conteneur (propriété innerFrame) à la racine du canvas
@@ -403,7 +405,7 @@ ZoomAndPan.prototype.enable = function(opt) {
         that.transform( that.transform() );
     }
     
-    if (/%/.test(width)) {
+    if (relativeUnitRegex.test(width) || relativeUnitRegex.test(height)) {
         
         JSYG(window).on("resize",majCanvas);
         backup.majCanvas = majCanvas;
