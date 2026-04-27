@@ -9,8 +9,6 @@ svg#content {
   border:1px solid gray;
   background-color:#ddd;
   display:inline-block;
-  width:100%;
-  height:80vh;
   box-sizing:border-box;
 }
 svg:not(:root){ 
