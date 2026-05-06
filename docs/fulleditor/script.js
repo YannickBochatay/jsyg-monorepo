@@ -13,7 +13,10 @@ svgEditor.enableDropFiles();
 
 svgEditor.enableMouseWheelZoom();
 
-svgEditor.on("load", function () {
+svgEditor.keepShapesRatio = true
+svgEditor.autoSmoothPaths = true
+
+svgEditor.on("load", () => {
   const dim = svgEditor.dimDocument();
   $('#width').val(dim.width);
   $('#height').val(dim.height);
@@ -31,17 +34,17 @@ svgEditor.registerKeyShortCut({
   "Ctrl+y": svgEditor.redo,
   "Ctrl+a":svgEditor.selectAll,
   "Delete": svgEditor.remove,
-  "ArrowUp" : function(e) { e.preventDefault(); svgEditor.dim("y","-=1"); },
-  "ArrowDown" : function(e) { e.preventDefault(); svgEditor.dim("y","+=1"); },
-  "ArrowLeft" : function(e) { e.preventDefault(); svgEditor.dim("x","-=1"); },
-  "ArrowRight" : function(e) { e.preventDefault(); svgEditor.dim("x","+=1"); }
+  "ArrowUp" : (e) => { e.preventDefault(); svgEditor.dim("y","-=1"); },
+  "ArrowDown" : (e) => { e.preventDefault(); svgEditor.dim("y","+=1"); },
+  "ArrowLeft" : (e) => { e.preventDefault(); svgEditor.dim("x","-=1"); },
+  "ArrowRight" : (e) => { e.preventDefault(); svgEditor.dim("x","+=1"); }
 });
 
 ////////////////////////////////
 // Menu File
 const dialogDimensions = $("#dimensions")[0];
 
-$("#newDocument").on("click", function () {
+$("#newDocument").on("click", () => {
   dialogDimensions.showModal();
 });
 
@@ -53,17 +56,17 @@ dimensionsForm.on("submit", e => {
   dialogDimensions.close();
 })
 
-$("#openDocument").on("click", function () {
+$("#openDocument").on("click", () => {
   svgEditor.chooseFile().then(svgEditor.loadFile).catch(alert);
 });
 
-$("#openImage").on("click", function () {
+$("#openImage").on("click", () => {
   svgEditor.chooseFile().then(svgEditor.loadImageAsDoc).catch(alert);
 });
 
 const dialogExample = $('#exampleChoice')[0];
 
-$('#openExample').on("click",function() {
+$('#openExample').on("click",() => {
     dialogExample.showModal();
 });
 
@@ -72,22 +75,22 @@ $('#example-field').on("change", e => {
   svgEditor.loadURL(`img/${e.target.value}.svg`);
 })
 
-$("#downloadSVG").on("click",function() {
+$("#downloadSVG").on("click",() => {
   svgEditor.download("svg");
 });
 
-$("#downloadPNG").on("click",function() {
+$("#downloadPNG").on("click",() => {
   svgEditor.download("png");
 });
 
-$('#print').on("click",function() { svgEditor.print(); });
+$('#print').on("click",() => { svgEditor.print(); });
 
 ////////////////////////////////
 // Menu Edition
 
-["remove","copy","cut","paste","undo","redo","group","ungroup"].forEach(function(action) {
+["remove","copy","cut","paste","undo","redo","group","ungroup"].forEach((action) => {
 
-    $('#'+action).on("click",function() {
+    $('#'+action).on("click",() => {
         svgEditor[action]();
     });
 });
@@ -95,28 +98,28 @@ $('#print').on("click",function() { svgEditor.print(); });
 ////////////////////////////////
 // Menu View
 
-$('#marqueeZoom').on("click",function() {
+$('#marqueeZoom').on("click",() => {
     svgEditor.marqueeZoom();
     menuBar.close();
 });
 
-$('#fitToCanvas').on("click",function() {
+$('#fitToCanvas').on("click",() => {
     svgEditor.zoomTo('canvas');
 });
 
-$('#fitToDoc').on("click",function() {
+$('#fitToDoc').on("click",() => {
     svgEditor.fitToDoc();
 });
 
-$('#realSize').on("click",function() {
+$('#realSize').on("click",() => {
     svgEditor.zoomTo(100);
 });
 
-$('#zoomIn').on("click",function() {
+$('#zoomIn').on("click",() => {
     svgEditor.zoom(+10);
 });
 
-$('#zoomOut').on("click",function() {
+$('#zoomOut').on("click",() => {
     svgEditor.zoom(-10);
 });
 
@@ -132,11 +135,11 @@ $('#mousePan').on("change",function() {
 ////////////////////////////////
 // Menu Options
 
-["canvasResizable", "editPathMainPoints", "editPathCtrlPoints",
+["editPathMainPoints", "editPathCtrlPoints",
   "keepShapesRatio", "autoSmoothPaths", "useTransformAttr",
-  "editPosition", "editSize", "editRotation", "editText"].forEach(function (property) {
+  "editPosition", "editSize", "editRotation", "editText"].forEach((property) => {
 
-    $('#' + property).on("change", function () {
+    $('#' + property).on("change", function() {
       svgEditor[property] = this.checked;
       $(this).blur();
     }).trigger("change");
@@ -144,14 +147,14 @@ $('#mousePan').on("change",function() {
 
 ////////////////////////////////
 // Menu Position
-["left","center","right","top","middle","bottom"].forEach(function(type) {
-  $('#align'+$.ucfirst(type)).on("click",function() {
+["left","center","right","top","middle","bottom"].forEach((type) => {
+  $('#align'+$.ucfirst(type)).on("click",() => {
     svgEditor.align(type);
   })
 });
 
-["Forwards","Backwards","Front","Back"].forEach(function(type) {
-  $('#move'+type).on("click",function() {
+["Forwards","Backwards","Front","Back"].forEach((type) => {
+  $('#move'+type).on("click",() => {
     svgEditor["move"+type]();
   });
 });
@@ -159,40 +162,76 @@ $('#mousePan').on("change",function() {
 /////////////////////////////////
 // Menu Insert
 
-$("#insertText").on("click",function() {
+$("#insertText").on("click", e => {
   const text = $("<text>").text("Bonjour le monde");
   svgEditor.enableInsertElement(text);
   menuBar.close();
 });
 
-$("#insertImage").on("click",function() {
+$("#insertImage").on("click",() => {
   svgEditor.chooseFile().then(svgEditor.insertImageFile).catch(alert);
 });
 
-function drawShape() {
+async function drawShape() {
   let type = this.id;
   if (type.includes("path")) {
     svgEditor.drawingPathMethod = (type == "path") ? "point2point" : "freehand";
     type = "path";
   }
   const shape = $("<"+type+">").addClass("perso");
-  svgEditor.drawShape(shape);
   menuBar.close();
+  await svgEditor.drawShape(shape);
+  svgEditor.enableSelection();
 }
 
 ["rect", "circle", "ellipse", "line", "polyline", "polygon", "path", "freehand-path"].forEach(type => {
   $("#"+type).on("click", drawShape);
 });
-  
+
+svgEditor.on("change", () => {
+  if (svgEditor.undoRedo.hasUndo()) {
+    $("#undo").removeAttr("disabled")
+  } else {
+    $("#undo").attr("disabled", "")
+  }
+  if (svgEditor.undoRedo.hasRedo()) {
+    $("#redo").removeAttr("disabled")
+  } else {
+    $("#redo").attr("disabled", "")
+  }
+})
+
+const alignItems = $("#alignLeft,#alignCenter,#alignRight,#alignTop,#alignMiddle,#alignBottom")
+const moveItems = $("#moveBack,#moveBackwards,#moveForwards,#moveFront");
+
+svgEditor.on("changetarget", () => {
+  switch (svgEditor.target()?.length) {
+    case 0: case undefined:
+      $("#copy,#cut,#group,#ungroup").attr("disabled", "");
+      alignItems.attr("disabled", "");
+      moveItems.attr("disabled", "");
+      break;
+    case 1:
+      $("#copy,#cut,#group").removeAttr("disabled");
+      alignItems.attr("disabled", "");
+      moveItems.removeAttr("disabled");
+      break;
+    default:
+      $("#copy,#cut,#group").removeAttr("disabled");
+      $("#ungroup").attr("disabled", "");
+      alignItems.removeAttr("disabled");
+      moveItems.attr("disabled", "");
+  }
+})
 
 /*
 
 
-$('#width').on("change",function() {
+$('#width').on("change",() => {
     svgEditor.dimDocument({width:this.value});
 });
 
-$('#height').on("change",function() {
+$('#height').on("change",() => {
     svgEditor.dimDocument({height:this.value});
 });
 

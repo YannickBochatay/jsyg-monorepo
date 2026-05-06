@@ -28,15 +28,15 @@
       <menu-item nocaret>
         Edition
         <menu-list slot="menu">
-          <menu-item id="copy">Copy</menu-item>
-          <menu-item id="cut">Cut</menu-item>
-          <menu-item id="paste">Paste</menu-item>
+          <menu-item id="copy" disabled>Copy</menu-item>
+          <menu-item id="cut" disabled>Cut</menu-item>
+          <menu-item id="paste" disabled>Paste</menu-item>
           <menu-separator></menu-separator>
-          <menu-item id="undo">Undo</menu-item>
-          <menu-item id="redo">Redo</menu-item>
+          <menu-item id="undo" disabled>Undo</menu-item>
+          <menu-item id="redo" disabled>Redo</menu-item>
           <menu-separator></menu-separator>
-          <menu-item id="group">Group</menu-item>
-          <menu-item id="ungroup">Ungroup</menu-item>
+          <menu-item id="group" disabled>Group</menu-item>
+          <menu-item id="ungroup" disabled>Ungroup</menu-item>
         </menu-list>
       </menu-item>
       <menu-item nocaret>
@@ -65,10 +65,10 @@
           <menu-item id="alignMiddle" disabled>Align Middle</menu-item>
           <menu-item id="alignBottom" disabled>Align Bottom</menu-item>
           <menu-separator></menu-separator>
-          <menu-item id="moveBack">Move To Back</menu-item>
-          <menu-item id="moveBackwards">Move Backwards</menu-item>
-          <menu-item id="moveForwards">Move Forwards</menu-item>
-          <menu-item id="moveFront">Move To Front</menu-item>
+          <menu-item id="moveBack" disabled>Move To Back</menu-item>
+          <menu-item id="moveBackwards" disabled>Move Backwards</menu-item>
+          <menu-item id="moveForwards" disabled>Move Forwards</menu-item>
+          <menu-item id="moveFront" disabled>Move To Front</menu-item>
         </menu-list>
       </menu-item>
       <menu-item nocaret>
@@ -78,7 +78,6 @@
           <menu-item id="zoomOut">Zoom Out</menu-item>
           <menu-item id="marqueeZoom"> Marquee Zoom</menu-item>
           <menu-item id="fitToCanvas">Fit to Canvas</menu-item>
-          <menu-item id="fitToDoc">Fit to Document</menu-item>
           <menu-item id="realSize">Real Size</menu-item>
           <menu-separator></menu-separator>
           <menu-item-checkbox id="mousePan">Mouse Pan</menu-item-checkbox>
@@ -93,10 +92,9 @@
           <menu-item-checkbox id="editText" checked>Edit text</menu-item-checkbox>
           <menu-item-checkbox id="editPathMainPoints" checked>Edit paths main points</menu-item-checkbox>
           <menu-item-checkbox id="editPathCtrlPoints">Edit paths control points</menu-item-checkbox>
-          <menu-item-checkbox id="autoSmoothPaths">Auto-smooth paths</menu-item-checkbox>
+          <menu-item-checkbox id="autoSmoothPaths" checked>Auto-smooth paths</menu-item-checkbox>
           <menu-item-checkbox id="useTransformAttr">Use transform attribute</menu-item-checkbox>
-          <menu-item-checkbox id="keepShapesRatio">Keep Shapes ratio</menu-item-checkbox>
-          <menu-item-checkbox id="canvasResizable">Canvas resizable</menu-item-checkbox>
+          <menu-item-checkbox id="keepShapesRatio" checked>Keep Shapes ratio</menu-item-checkbox>
         </menu-list>
       </menu-item>
     </menu-bar>
@@ -122,5 +120,13 @@
         <input type="submit" value="Submit">
       </form>
     </dialog>
+    <template id="context-menu">
+      <menu-context>
+        <menu-list>
+          <menu-item>test</menu-item>
+          <menu-item>test</menu-item>
+        </menu-list>
+      </menu-context>
+    </template>
   </body>
 </html>
