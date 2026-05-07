@@ -236,7 +236,7 @@ Selection.prototype.deselectAll = function(e) {
     var that = this,
     selected = this.selected.slice();
     
-    new JSYG(this.list).removeClass(this.classSelected,this.classOver); //par précaution
+    new JSYG(this.list).removeClass([this.classSelected,this.classOver]); //par précaution
     
     while (this.selected.length > 0) this.removeElmt(this.selected[0],e);
     
@@ -452,6 +452,8 @@ Selection.prototype.enable = function(opt) {
             if ((!e.ctrlKey || !that.multiple) && that.trigger("beforedeselect",that.node,e)!==false) that.deselectAll(e);
             
             that.clearNativeSelection();
+
+            e.preventDefault();
             
             var cible = that._getTarget(e);
             
@@ -465,7 +467,6 @@ Selection.prototype.enable = function(opt) {
         },
         
         "drag:start" : function(e) {
-            
             if (that.multiple && that.trigger("beforedrag",that.node,e) !== false) that._draw(e);
             else drawing = false;
         },
