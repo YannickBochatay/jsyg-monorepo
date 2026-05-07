@@ -2106,9 +2106,7 @@ function createFakeDragFunction($nodes) {
             $nodes.off("mousemove",mousemoveFct);
             new JSYG(document).off("mouseup",mouseupFct);
         }
-        
-        e.preventDefault();
-        
+                
         $nodes.on("mousemove",mousemoveFct);
         new JSYG(document).on("mouseup",mouseupFct);
     };
