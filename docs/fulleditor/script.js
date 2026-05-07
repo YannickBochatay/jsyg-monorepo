@@ -22,7 +22,17 @@ svgEditor.on("load", () => {
   $('#height').val(dim.height);
 });
 
-svgEditor.loadURL('img/linux.svg')
+svgEditor.loadURL('img/linux.svg');
+
+const contextMenu = document.querySelector("menu-context");
+const { box } = svgEditor.shapeEditor;
+box.on({
+  update() {
+    const id = "editing-box";
+    if (!box.container.id) box.container.id = id;
+    contextMenu.setAttribute("for", id);
+  }
+})
 
 const menuBar = document.querySelector("menu-bar");
 
