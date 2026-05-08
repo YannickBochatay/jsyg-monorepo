@@ -1,7 +1,12 @@
 # @jsyg
 
-Code rewrite of [JSYG framework](https://github.com/YannickBochatay/JSYG.FullEditor) with ecmascript modules and monorepo.
+Code rewrite of [JSYG library](https://github.com/YannickBochatay/JSYG.FullEditor) with ecmascript modules and monorepo.
 
-[Documentation](https://yannickbochatay.github.io/jsyg-monorepo/docs/)
+[Documentation and demos](https://yannickbochatay.github.io/jsyg-monorepo/docs)
 
-Demo of a [svg editor prototype](https://yannickbochatay.github.io/jsyg-monorepo/docs/fulleditor/) built with @jsyg
+## @jsyg/fulleditor
+
+The top-level module of JSYG library for creating fully customisable online SVG editors.
+
+- [Docs](https://github.com/YannickBochatay/jsyg-monorepo/tree/main/packages/fulleditor)
+- [Demo](https://yannickbochatay.github.io/jsyg-monorepo/docs/fulleditor/)
