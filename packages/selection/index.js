@@ -452,8 +452,6 @@ Selection.prototype.enable = function(opt) {
             if ((!e.ctrlKey || !that.multiple) && that.trigger("beforedeselect",that.node,e)!==false) that.deselectAll(e);
             
             that.clearNativeSelection();
-
-            e.preventDefault();
             
             var cible = that._getTarget(e);
             
@@ -467,6 +465,7 @@ Selection.prototype.enable = function(opt) {
         },
         
         "drag:start" : function(e) {
+            e.preventDefault();
             if (that.multiple && that.trigger("beforedrag",that.node,e) !== false) that._draw(e);
             else drawing = false;
         },
