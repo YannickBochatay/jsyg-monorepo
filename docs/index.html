@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Code snippet">
+    <title>@jsyg modules</title>
+    <style>
+      html {
+        font-size:16px;
+        font-family:sans-serif;
+        max-width: 80ch;
+        margin:auto;
+      }
+      header {
+        display:flex;
+        align-items: center;
+        hgroup {
+          flex:1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <hgroup>
+        <h1>@jsyg modules</h1>
+        <p>Modules of JSYG library</p>
+      </hgroup>
+      <a href="https://github.com/YannickBochatay/jsyg-monorepo">Github</a>
+    </header>
+    <main>
+      
+    </main>
+    <script type="module">
+      const jsygModules = ["alignment", "boundingbox", "container", "core","draggable", "editor",
+    "events", "fulleditor", "matrix","path","pathdrawer", "point","polylinedrawer","resizable",
+    "rotatable", "selection", "shapedrawer", "stdconstruct", "strutils", "texteditor",
+    "undoredo", "utils", "vect","wrapper", "zoomandpan"];
+
+      let content = "";
+
+      for (const module of jsygModules) {
+        content += `
+          <section>
+            <h2>${module}</h2>
+            <ul>
+              <li>
+                <a href="https://github.com/YannickBochatay/jsyg-monorepo/tree/main/packages/${module}">Docs</a>
+              </li>
+              <li>
+                <a href="https://yannickbochatay.github.io/jsyg-monorepo/${module}">Demo</a>
+              </li>
+            </ul>
+          </section>
+        `;
+      }
+
+      const main = document.querySelector("main");
+      main.innerHTML = content;
+    </script>
+  </body>
+</html>
