@@ -60,7 +60,7 @@ $("#download").on("click",function() {
 
 ### Full example script
 
-<https://github.com/YannickBochatay/jsyg-monorepo/docs/blob/master/docs/fulleditor/script.js>
+<https://yannickbochatay.github.io/jsyg-monorepo/docs/fulleditor/script.js>
 
 ### API
 
