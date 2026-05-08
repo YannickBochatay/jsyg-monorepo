@@ -1,20 +1,18 @@
 (()=>{
   // inspired by https://lea.verou.me/blog/2026/external-import-maps-today/
 
-  const DIR = "node_modules";
-
   const jsygModules = ["alignment", "boundingbox", "container", "core","draggable", "editor",
     "events", "fulleditor", "matrix","path","pathdrawer", "point","polylinedrawer","resizable",
     "rotatable", "selection", "shapedrawer", "stdconstruct", "strutils", "texteditor",
     "undoredo", "utils", "vect","wrapper", "zoomandpan"];
 
   const map = { imports : {
-    jquery : DIR + "/jquery/dist-module/jquery.module.min.js",
-    pathseg : DIR + "/pathseg/pathseg.js"
+    jquery : "lib/jquery.module.min.js",
+    pathseg : "lib/pathseg.js"
   } };
 	
   for (const module of jsygModules) {
-    map.imports[`@jsyg/${module}`] = `${DIR}/@jsyg/${module}/index.js`;
+    map.imports[`@jsyg/${module}`] = `packages/${module}/index.js`;
   }
 
   const mapUrl = document.currentScript?.src;
