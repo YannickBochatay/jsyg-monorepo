@@ -1,7 +1,7 @@
 # @jsyg/boundingbox
 BoundingBox plugin for JSYG framework
 
-[demo](http://yannickbochatay.github.io/jsyg-monorepo/boundingbox/)
+[demo](http://yannickbochatay.github.io/jsyg-monorepo/docs/boundingbox/)
 
 ### Installation
 ```shell

@@ -4,7 +4,7 @@ Provides a complete and very simple API to create your own svg online editor. UI
 
 ### Demo
 
-[http://yannickbochatay.github.io/jsyg-monorepo/fulleditor](http://yannickbochatay.github.io/jsyg-monorepo/fulleditor/)
+[http://yannickbochatay.github.io/jsyg-monorepo/docs/fulleditor](http://yannickbochatay.github.io/jsyg-monorepo/docs/fulleditor/)
 
 ### Installation
 
@@ -60,7 +60,7 @@ $("#download").on("click",function() {
 
 ### Full example script
 
-<https://github.com/YannickBochatay/jsyg-monorepo/blob/master/docs/fulleditor/script.js>
+<https://github.com/YannickBochatay/jsyg-monorepo/docs/blob/master/docs/fulleditor/script.js>
 
 ### API
 

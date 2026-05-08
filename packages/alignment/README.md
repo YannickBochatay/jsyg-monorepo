@@ -2,7 +2,7 @@
 Alignment plugin for JSYG framework
 
 ### Demo
-[http://yannickbochatay.github.io/jsyg-monorepo/alignment](http://yannickbochatay.github.io/jsyg-monorepo/alignment)
+[http://yannickbochatay.github.io/jsyg-monorepo/docs/alignment](http://yannickbochatay.github.io/jsyg-monorepo/docs/alignment)
 
 ### Installation
 ```shell

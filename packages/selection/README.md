@@ -2,7 +2,7 @@
 Mouse selection plugin for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
-[http://yannickbochatay.github.io/jsyg-monorepo/selection](http://yannickbochatay.github.io/jsyg-monorepo/selection)
+[http://yannickbochatay.github.io/jsyg-monorepo/docs/selection](http://yannickbochatay.github.io/jsyg-monorepo/docs/selection)
 
 
 ### Installation

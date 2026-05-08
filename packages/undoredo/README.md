@@ -2,7 +2,7 @@
 DOM Undo/Redo plugin for JSYG framework (or standalone with jQuery)
 
 ### Demo
-[http://yannickbochatay.github.io/jsyg-monorepo/](http://yannickbochatay.github.io/jsyg-monorepo/)
+[http://yannickbochatay.github.io/jsyg-monorepo/docs/](http://yannickbochatay.github.io/jsyg-monorepo/docs/)
 
 ### Installation
 ```shell

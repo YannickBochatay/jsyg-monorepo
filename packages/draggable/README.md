@@ -2,7 +2,7 @@
 Draggable plugin for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
-[http://yannickbochatay.github.io/jsyg-monorepo/draggable](http://yannickbochatay.github.io/jsyg-monorepo/draggable)
+[http://yannickbochatay.github.io/jsyg-monorepo/docs/draggable](http://yannickbochatay.github.io/jsyg-monorepo/docs/draggable)
 
 ### Installation
 ```shell

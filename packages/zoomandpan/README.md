@@ -4,7 +4,7 @@ Zoom and Pan features with [JSYG framework](https://github.com/YannickBochatay/j
 
 ### Demo
 
-<http://yannickbochatay.github.io/jsyg-monorepo/zoomandpan>
+<http://yannickbochatay.github.io/jsyg-monorepo/docs/zoomandpan>
 
 ### Installation
 

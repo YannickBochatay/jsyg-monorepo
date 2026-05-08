@@ -40,7 +40,7 @@ npm install @jsyg/wrapper
   {
     "imports": {
       "jquery": "node_modules/jquery/dist-module/jquery.module.js",
-      "@jsyg/wrapper": "node_modules/jsyg-monorepo/wrapper/index.js"
+      "@jsyg/wrapper": "node_modules/jsyg-monorepo/docs/wrapper/index.js"
     }
   }
 </script>
