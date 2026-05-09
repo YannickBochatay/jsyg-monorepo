@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/zoomandpan",
   "version": "1.0.0",
-  "description": "Zoom and pan features with JSYG framework",
+  "description": "Zoom and pan features with JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/alignment",
   "version": "1.0.0",
-  "description": "Alignment plugin for JSYG framework",
+  "description": "Alignment plugin for JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

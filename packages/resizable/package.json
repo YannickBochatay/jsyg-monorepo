@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/resizable",
   "version": "1.0.0",
-  "description": "Resizable plugin for JSYG framework",
+  "description": "Resizable plugin for JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

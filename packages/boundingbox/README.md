@@ -1,5 +1,5 @@
 # @jsyg/boundingbox
-BoundingBox plugin for JSYG framework
+BoundingBox plugin for JSYG library
 
 [demo](http://yannickbochatay.github.io/jsyg-monorepo/docs/boundingbox/)
 

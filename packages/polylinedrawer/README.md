@@ -1,6 +1,6 @@
 # @jsyg/polylinedrawer
 
-Draw polylines and polygon with [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+Draw polylines and polygon with [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 #### Demo
 
@@ -24,7 +24,7 @@ document.querySelector("svg").addEventListener("mousedown",function(e) {
    if (pencil.inProgress) return;
 
    let poly = document.createElementNS("http://www.w3.org/2000/svg","polyline");
-   //with JSYG framework : path = JSYG("<polyline>")
+   //with JSYG library : path = JSYG("<polyline>")
 
    this.appendChild(poly);
 

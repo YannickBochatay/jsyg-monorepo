@@ -1,6 +1,6 @@
 # @jsyg/matrix
 
-matrix constructor for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+matrix constructor for [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Installation
 

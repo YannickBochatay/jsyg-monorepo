@@ -1,6 +1,6 @@
 # @jsyg/editor
 
-Editor of svg shapes with [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+Editor of svg shapes with [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
 

@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/events",
   "version": "1.0.0",
-  "description": "Events constructor for JSYG framework (or standalone)",
+  "description": "Events constructor for JSYG library (or standalone)",
   "main": "index.js",
   "files": [
     "index.js"

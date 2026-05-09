@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/editor",
   "version": "1.0.0",
-  "description": "Editor of svg chapes (JSYG framework)",
+  "description": "Editor of svg chapes (JSYG library)",
   "main": "index.js",
   "files": [
     "index.js"

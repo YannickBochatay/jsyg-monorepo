@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/boundingbox",
   "version": "1.0.0",
-  "description": "Bounding Box plugin for JSYG framework",
+  "description": "Bounding Box plugin for JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

@@ -1,5 +1,5 @@
 # @jsyg/texteditor
-svg text editor with [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo).
+svg text editor with [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo).
 
 ### Demo
 [http://yannickbochatay.github.io/jsyg-monorepo/docs/texteditor/](http://yannickbochatay.github.io/jsyg-monorepo/docs/texteditor/)

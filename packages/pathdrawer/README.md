@@ -1,6 +1,6 @@
 # @jsyg/pathdrawer
 
-drawing interactive svg paths with [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+drawing interactive svg paths with [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 #### Demo
 
@@ -24,7 +24,7 @@ document.querySelector("svg").addEventListener("mousedown",function(e) {
     if (pencil.inProgress) return;
 
     let path = document.createElementNS("http://www.w3.org/2000/svg","path");
-    //with JSYG framework : path = JSYG("<path>")
+    //with JSYG library : path = JSYG("<path>")
 
     this.appendChild(path);
 

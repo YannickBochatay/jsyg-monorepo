@@ -1,6 +1,6 @@
 # @jsyg/path
 
-Manipulation of svg path with [JSYG framework](jsyg-monorepo)
+Manipulation of svg path with [JSYG library](jsyg-monorepo)
 
 ### Installation
 

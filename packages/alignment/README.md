@@ -1,5 +1,5 @@
 # @jsyg/alignment
-Alignment plugin for JSYG framework
+Alignment plugin for JSYG library
 
 ### Demo
 [http://yannickbochatay.github.io/jsyg-monorepo/docs/alignment](http://yannickbochatay.github.io/jsyg-monorepo/docs/alignment)

@@ -1,6 +1,6 @@
 # @jsyg/zoomandpan
 
-Zoom and Pan features with [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+Zoom and Pan features with [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
 

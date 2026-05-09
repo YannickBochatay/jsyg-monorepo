@@ -1,5 +1,5 @@
 # @jsyg/undoredo
-DOM Undo/Redo plugin for JSYG framework (or standalone with jQuery)
+DOM Undo/Redo plugin for JSYG library (or standalone with jQuery)
 
 ### Demo
 [http://yannickbochatay.github.io/jsyg-monorepo/docs/](http://yannickbochatay.github.io/jsyg-monorepo/docs/)

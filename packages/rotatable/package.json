@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/rotatable",
   "version": "1.0.0",
-  "description": "Rotatable plugin for JSYG framework",
+  "description": "Rotatable plugin for JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

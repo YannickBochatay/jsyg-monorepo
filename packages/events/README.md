@@ -1,5 +1,5 @@
 # @jsyg/events
-Events constructor for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo) (or standalone).
+Events constructor for [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo) (or standalone).
 
 
 ## Installation

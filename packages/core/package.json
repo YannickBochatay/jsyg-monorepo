@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/core",
   "version": "1.0.0",
-  "description": "Core of JSYG framework",
+  "description": "Core of JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

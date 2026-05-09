@@ -1,5 +1,5 @@
 # @jsyg/vect
-Vectors constructor for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo) or standalone
+Vectors constructor for [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo) or standalone
 
 ### Installation
 ```shell

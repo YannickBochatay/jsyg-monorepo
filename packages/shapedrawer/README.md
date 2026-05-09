@@ -1,6 +1,6 @@
 # @jsyg/shapedrawer
 
-Draw svg shapes with [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+Draw svg shapes with [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
 
@@ -26,7 +26,7 @@ drawer.on("end",function(e,shape) {
 document.querySelector("svg").on("mousedown",function(e) {
 
     let shape = document.createElementNS("http://www.w3.org/2000/svg","rect");
-   //with JSYG framework : shape = JSYG("<rect>")
+   //with JSYG library : shape = JSYG("<rect>")
 
     this.appendChild(shape);
 

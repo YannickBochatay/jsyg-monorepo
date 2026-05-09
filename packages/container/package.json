@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/container",
   "version": "1.0.0",
-  "description": "Container plugin for JSYG framework",
+  "description": "Container plugin for JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/draggable",
   "version": "1.0.0",
-  "description": "Draggable plugin for JSYG framework",
+  "description": "Draggable plugin for JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

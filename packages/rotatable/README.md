@@ -1,5 +1,5 @@
 # @jsyg/rotatable
-Rotatable plugin for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+Rotatable plugin for [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
 [http://yannickbochatay.github.io/JSYG.Rotatable/](http://yannickbochatay.github.io/jsyg-monorepo/docs/)

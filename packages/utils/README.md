@@ -5,7 +5,7 @@ Many features added to [@jsyg/wrapper](https://github.com/YannickBochatay/jsyg-m
 ### Installation
 
 You probably don't need to install this module individually.
-It's a brick of [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo).
+It's a brick of [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo).
 You may be insterested by [JSYG.FullEditor](https://github.com/YannickBochatay/jsyg-monorepo/docs/tree/main/packages/full-editor), a full svg editor API.
 If you want to install it anyway :
 

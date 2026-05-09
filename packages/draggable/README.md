@@ -1,5 +1,5 @@
 # @jsyg/raggable
-Draggable plugin for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+Draggable plugin for [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
 [http://yannickbochatay.github.io/jsyg-monorepo/docs/draggable](http://yannickbochatay.github.io/jsyg-monorepo/docs/draggable)

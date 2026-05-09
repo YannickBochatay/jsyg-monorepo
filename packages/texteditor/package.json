@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/texteditor",
   "version": "1.0.0",
-  "description": "svg text editor with JSYG framework",
+  "description": "svg text editor with JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

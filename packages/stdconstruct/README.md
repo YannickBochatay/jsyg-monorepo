@@ -76,7 +76,7 @@ blink.enable({
 })
 ```
 
-If you use JSYG framework, you can register the plugin like this :
+If you use JSYG library, you can register the plugin like this :
 ```javascript
 let plugin = JSYG.bindPlugin(Blink)
 

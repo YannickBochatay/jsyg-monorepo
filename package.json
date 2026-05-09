@@ -1,7 +1,7 @@
 {
   "name": "jsyg-monorepo",
   "version": "0.0.1",
-  "description": "Monorepo for JSYG framework",
+  "description": "Monorepo for JSYG library",
   "keywords": [
     "svg",
     "js",

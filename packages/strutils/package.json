@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/strutils",
   "version": "1.0.0",
-  "description": "String utilitaries for JSYG framework or standalone",
+  "description": "String utilitaries for JSYG library or standalone",
   "main": "index.js",
   "files": [
     "index.js"

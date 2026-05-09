@@ -1,5 +1,5 @@
 # @jysg/container
-Container plugin for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo)
+Container plugin for [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo)
 
 ### Demo
 [http://yannickbochatay.github.io/jsyg-monorepo/docs/container/](http://yannickbochatay.github.io/jsyg-monorepo/docs/container/)

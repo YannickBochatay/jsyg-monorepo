@@ -1,5 +1,5 @@
 # @jsyg/core
-Core of JSYG framework
+Core of JSYG library
 
 It's just a pooling of modules :
 * @jsyg/wrapper
@@ -11,7 +11,7 @@ It's just a pooling of modules :
 * @jsyg/events
 * @jsyg/stdconstruct
 
-Each of these modules can be used standalone if you don't need JSYG framework.
+Each of these modules can be used standalone if you don't need JSYG library.
 
 ### Installation
 

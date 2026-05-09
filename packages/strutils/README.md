@@ -1,6 +1,6 @@
 # @jsyg/strutils
 
-String utilitaries for [JSYG framework](https://github.com/YannickBochatay/jsyg-monorepo) or standalone.
+String utilitaries for [JSYG library](https://github.com/YannickBochatay/jsyg-monorepo) or standalone.
 
 ### Installation
 

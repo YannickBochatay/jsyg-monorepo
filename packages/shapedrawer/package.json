@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/shapedrawer",
   "version": "1.0.0",
-  "description": "Drawing svg shapes with JSYG framework",
+  "description": "Drawing svg shapes with JSYG library",
   "main": "index.js",
   "files": [
     "index.js"

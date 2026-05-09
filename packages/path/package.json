@@ -1,7 +1,7 @@
 {
   "name": "@jsyg/path",
   "version": "1.0.0",
-  "description": "Manipulation of svg path with JSYG framework",
+  "description": "Manipulation of svg path with JSYG library",
   "main": "index.js",
   "files": [
     "index.js"
