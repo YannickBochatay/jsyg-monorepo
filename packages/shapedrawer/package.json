@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Drawing svg shapes with JSYG framework",
   "main": "index.js",
-  "files":["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "test": "tests"
   },

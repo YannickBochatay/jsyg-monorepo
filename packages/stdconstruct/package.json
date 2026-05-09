@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Standard constructor for writing JSYG plugins",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "test": "tests"
   },

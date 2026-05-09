@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "jQuery wrapper to work on svg elements",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "example": "examples",
     "test": "tests"

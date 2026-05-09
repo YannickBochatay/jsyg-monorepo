@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Events constructor for JSYG framework (or standalone)",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "test": "tests"
   },

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Core of JSYG framework",
   "main": "index.js",
-  "files" : ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "test": "tests"
   },
@@ -29,7 +31,7 @@
   "homepage": "https://github.com/YannickBochatay/jsyg-monorepo#readme",
   "dependencies": {
     "@jsyg/utils": "^1.0.0",
-    "@jsyg/stdconstruct": "1.0.0",
-    "@jsyg/events": "1.0.0"
+    "@jsyg/stdconstruct": "^1.0.0",
+    "@jsyg/events": "^1.0.0"
   }
 }

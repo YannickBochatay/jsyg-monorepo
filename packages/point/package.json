@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Point constructor for JSYG",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "test": "tests"
   },

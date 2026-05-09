@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "JSYG plugin for drawing interactive svg paths",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "directories": {
     "test": "tests"
   },

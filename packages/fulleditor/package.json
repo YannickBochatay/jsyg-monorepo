@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://contact@ybochatay.fr@github.com/YannickBochatay/jsyg-monorepo.git"
+    "url": "git+https://contact%40ybochatay.fr@github.com/YannickBochatay/jsyg-monorepo.git"
   },
   "keywords": [
     "svg",
@@ -36,5 +36,8 @@
     "@jsyg/texteditor": "^1.0.0",
     "@jsyg/undoredo": "^1.0.0",
     "@jsyg/zoomandpan": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
